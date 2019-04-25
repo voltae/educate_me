@@ -1,5 +1,5 @@
 # educate_me
-ducational Web app for children aged 7-10
+Educational Web app for children aged 7-10
 ## Task detail
 * Create an educational Web app for children aged 7-10 (2nd grade++)
 * Choose one educational subject: 
