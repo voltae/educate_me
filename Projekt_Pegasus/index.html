@@ -9,51 +9,75 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link ref="stylesheet" href="css/primary.css">
-  <script src="js/primary.js"></script>
+  <link ref="stylesheet" href="css/pegasus.css">
+  <script src="js/pegasus.js"></script>
   <title>Pegasus Lern Spa&szlig;</title>
 </head>
 
 <body>
   <header>
-    <nav class="navbar navbar-dark bg-dark">
-      <!-- Navbar content -->
-      <a class="navbar-brand" href="#">Pegasus Lern Spa&szlig;</a>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Dropdown button
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-          <a class="dropdown-item" href="#">And here something comletely different</a>
-        </div>
-      </div>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">Logo</a>
+
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Lernen</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">&Uuml;ben</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Test</a>
+        </li>
+
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Dropdown link
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Lernen</a>
+            <a class="dropdown-item" href="#">&Uuml;ben</a>
+            <a class="dropdown-item" href="#">Test</a>
+          </div>
+        </li>
+      </ul>
     </nav>
   </header>
-  <div class="container-fluid">
-    <!-- Upper menu navigation -->
 
-    <div class="row">
-      <div class="col">
-        first column
+  <div class="container-fluid>">
+    <div class="jumbotron jumbotron-fluid>">
+      <div class="container">
+        <h1 class="display-4">Willkommen zur Primary Science</h1>
+        <p class="lead">Wichtige Fragen aus dem breiten Gebiet der Wissenschaften werden hier gekl&auml;rt. Oder wu&szlig;tet du
+          da&szlig; Fische Fliegen k&ouml;nnen.
+          Aber ja, deswegen haben sie ja Fl&uuml;gel.</p>
       </div>
-
-      <div class="col">
-        second column
-      </div>
-
-
     </div>
-
-
-    <h1>Willkommen zur Primary Science </h1>
-    <p>Hier würde sich dann das ganze abspielen, ist halt mal so der Plan.</p>
-    <footer>
-      this is the footer
-    </footer>
+    <div class="row">
+      <div class="col-sm-6">
+        <h3>Text kommt in diesen Container</h3>
+        <p>Hier würde sich dann das ganze abspielen, ist halt mal so der Plan.</p>
+      </div>
+      <div class="col-sm-6 answerfield">
+        <h3>Antwortfeld</h3>
+        <p>und hier das Antwort formfeld</p>
+        <form>
+          <div class="form-group">
+            <label for="answer">Antwort</label>
+            <input type="text" class="form-control" id="answer">
+          </div>
+          <button type="submit" class="btn btn-primary">Abschicken</button>
+      </div>
+    </div>
+    </form>
+  </div>
+  </div>
+  <footer>
+    this is the footer
+  </footer>
 
   </div>
   <!-- Optional JavaScript -->

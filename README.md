@@ -1,18 +1,42 @@
 # educate_me
 Educational Web app for children aged 7-10
-## Basic science
+## Topic 
+asic science
+
+## Design Details
 ### Teach
 Frage erscheint im Fragefeld. User hat die Möglichkeit mittels Antwort Button die richtige Anwort einzusehen.
 _Wie kommt User zur nächste Frage Button oder Time out?_
 ### Practice
 Frage wird angezeigt, User hat Auswahl der Antworten anch Mulitple Choice Prinzip aus 4 Möglichkeiten. Immer nur 1 richtig.
-** Progess Bar **
+**ProgessBar**
 ### Test
 8 Fragen random ausgewählt. UI wie Practice aber mit mitprotokollieren der Anzahl der richtigen und falschen Antworten.
 ab 50% positiv -> Highscore wird automatisch erstellt, Smiley angezeigt; unter 50% -> Wiederholung nach einem Timer (bsp 30 sec; check ob Timer trotz refresh bestehen bleibt) möglich; sadface wird angezeigt. Es wird kein Highscore gespeichert.
-### Technische Implementierung
-Highscore: Mittels Webstorage speichern;
+## Technische Implementierung
 Fragen und Antworten: Array (JSON List?);
+Da die Frge jeweils mehrere mögliche Antworten speichern kann, ist glaube ich besser, eine Objekt zu erstellen, das Frage und Antwort  gleichzeitig speichert. Die Fragen können dann als Objekt-Arra gespeichert werden.
+### Objekt Prototyp
+#### delaration
+```function Question = (question, answer, opional) {
+    this.question = question;
+    this.answer = answer
+    this.opional = optional;
+}
+```
+optional ist dabei ein Array von Strings.
+#### implement
+```{ 
+    "wieviel wiegt ein halbers rhinozerus",
+    "halb so viel wie ein ganzes"
+    {
+        "was, halbe rhinozerusse gibts wirklich",
+        "och ne schon wieder der mann mit dem messer",
+        "huh, schätze mal so um die 42" 
+    }
+}
+```
+
 
 ## Task detail
 * Create an educational Web app for children aged 7-10 (2nd grade++)
