@@ -16,6 +16,7 @@ function getNext() {
     }
     xmlhttp.open('GET', '/../php/server.php');
     xmlhttp.addEventListener('load', function(event) {
+        
         console.log(XMLHttpRequest.responseText);
     })
     xmlhttp.send();
