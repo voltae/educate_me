@@ -10,11 +10,7 @@ function getNext() {
     if (window.XMLHttpRequest) {
         xmlhttp =  new XMLHttpRequest();
     } 
-    xmlhttp.onreadystatechange=function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            document.getElementById('quest-field').innerHTML=xmlhttp.responseText;
-        }
-    }
+ 
     xmlhttp.open('GET', '/../php/server.php');
     xmlhttp.addEventListener('load', getRespond);
     xmlhttp.addEventListener('error', getError);
@@ -30,21 +26,46 @@ function getRespond(event) {
 
     // add the answer buttons
     var quest_field = document.getElementById('quest-field');
-    let alternatives = respond.alternatives;
-    alternatives.forEach(element => {
+    quest_field.innerHTML="";
+    var table = document.createElement('tr');
+    quest_field.appendChild(table);
+    table.className = 'table table-borderless';
+
+    var tr = document.createElement("tr");
+    table.appendChild(tr);
+    var answers = respond.alternatives;
+    answers.push(respond.answer);   // add he answer to the buttons
+
+    answers = shuffleArray(answers);
+    answers.forEach(element => {
+        var td = document.createElement('td');
         var button = document.createElement('button');
         button.addEventListener('click', function() {
             evaluateAnswer(element, respond.answer);
         });
-
         button.innerText = element;
-        quest_field.appendChild(button);
+        td.appendChild(button);
+        tr.appendChild(td);
     });
 }
 
 function evaluateAnswer(element, answer) {
     console.log(element);
     console.log(answer);
+
+    var feedback = document.getElementById("feedback-field");
+    if(element == answer) {
+        feedback.className='alert alert-success';
+        feedback.innerText = "Super, diese Antwort ist richtig!";
+    } else {
+        feedback.className='alert alert-warning';
+        feedback.innerText = "Schade. Diese Antwort ist leider falsch!";  
+    }
+}
+
+function shuffleArray(array) {
+    array.sort(() => Math.random - 0.5);
+    return array;
 }
 
 function getError() {
