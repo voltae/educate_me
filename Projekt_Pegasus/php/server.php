@@ -1,15 +1,13 @@
 <?php
-$cookie_name = "user";
-$cookie_value = '';
+session_start();
 
+$session_name = 'user';
 // set cookie if not exists, max duration 1 day
-if (!isset($_COOKIE[$cookie_name])) {
-  setcookie($cookie_name, $cookie_value, time() + 86400, '/');
+if (!isset($_SESSION[$session_name])) {
+  $_SESSION[$session_name] = [];
 }
 // get index array from cookie
-$index_array = unserialize($_COOKIE[$cookie_name]);
-header("Content-Type: application/json; charset=-utf-8");
-
+$index_array = $_SESSION[$session_name];
 
 // Question class definiton
 class Question
@@ -32,7 +30,7 @@ $unsend = initQuestions($index_array);
 if (count($unsend) == 0) {
      $question = new Question('','',''); 
      echo json_encode($question);
-     setcookie($cookie_name, '', time() + 86400, '/');
+     $_SESSION[$session_name] = [];
   }
 else {  
   $index = rand(0, count($unsend) - 1);
@@ -41,14 +39,13 @@ else {
   
   $jsonQuest = json_encode($question);
   echo $jsonQuest;
-  array_push($index_Array, $index);
+  array_push($index_array, $index);
   sort($index_array);
-  $cookie_value= serialize($index_array);
-  setcookie($cookie_name, $cookie_value, time() + 86400, '/');
+  $_SESSION[$session_name] = $index_array;
 }
 
 // init new question array
-function initQuestions($told_quests)
+function initQuestions($index_array)
 {
   // constant array of questions
 $questions = array(
@@ -73,12 +70,11 @@ $questions = array(
   for ($i = 0; $i < count($questions); $i++) {
     $question = $questions[$i];
     $question->index = $i;
-    for ($j = 0; $j < count($told_quests); $j++) {
-      $told_quest =$told_quests[$j];
-      if ($told_quest->index <> $question->index) {
-        $temp[$i] = $question;
-        break;
-      }
+    $temp[$i] = $questions[$i];
+  }
+  for ($i = 0; $i < count($index_array); $i++) {
+    if ($temp->index == $index_array[$i]) {
+      array_slice($temp, $i, 1);
     }
   }
   return $temp;
