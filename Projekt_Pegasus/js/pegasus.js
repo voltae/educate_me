@@ -42,6 +42,7 @@ function getRespond(event) {
             evaluateAnswer(element, respond.answer);
         });
         button.innerText = element;
+        button.className ='btn btn-outline-primary';
         td.appendChild(button);
         tr.appendChild(td);
     });
