@@ -2,13 +2,6 @@ window.addEventListener('load', setup);
 
 function setup() {
     document.getElementById('next-quest').addEventListener('click', getNext);
-    if (window.XMLHttpRequest) {
-        xmlhttp =  new XMLHttpRequest();
-    } 
- 
-    xmlhttp.open('GET', '/../php/server.php?param=initQuestion');
-    xmlhttp.send();
-    xmlhttp.addEventListener('load', logRespond);
 }
 
 
@@ -16,8 +9,7 @@ function getNext() {
     if (window.XMLHttpRequest) {
         xmlhttp =  new XMLHttpRequest();
     } 
- 
-    xmlhttp.open('GET', '/../php/server.php?param=getQuestion');
+    xmlhttp.open('GET', '/../php/server.php');
     xmlhttp.addEventListener('load', getRespond);
     xmlhttp.addEventListener('error', getError);
     xmlhttp.send();

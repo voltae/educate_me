@@ -1,10 +1,14 @@
 <?php
-session_start();
+$cookie_name = "user";
+$cookie_value = '';
 
-header("Content-Type: application/json; charset=-utf-8");
-if (!isset($_SESSION['visited'])) {
-  $_SESSION['visited'] = true;
+// set cookie if not exists, max duration 1 day
+if (!isset($_COOKIE[$cookie_name])) {
+  setcookie($cookie_name, $cookie_value, time() + 86400, '/');
 }
+// get index array from cookie
+$index_array = unserialize($_COOKIE[$cookie_name]);
+header("Content-Type: application/json; charset=-utf-8");
 
 
 // Question class definiton
@@ -23,37 +27,28 @@ class Question
   }
 }
 
-static $unsend = array();
-// get rewuest parameter from url
-$param = $_REQUEST['param'];
-var_dump($param);
+$unsend = initQuestions($index_array);
 
-switch ($param) {
-  case 'initQuestion':
-    $unsend = initQuestion();
-    break;
-  case 'getQuestion':
-    getQuestion($unsend);
-    break;
-  default:
-    break; 
-}
-function getQuestion($unsend)
-{
-    if (count($unsend) == 0) {
-     $unsend = initQuestion();
+if (count($unsend) == 0) {
+     $question = new Question('','',''); 
+     echo json_encode($question);
+     setcookie($cookie_name, '', time() + 86400, '/');
   }
+else {  
   $index = rand(0, count($unsend) - 1);
   $question = $unsend[$index];
   $question->index = $index + 1;
-  \array_splice($unsend, $index, 1);
-
+  
   $jsonQuest = json_encode($question);
   echo $jsonQuest;
+  array_push($index_Array, $index);
+  sort($index_array);
+  $cookie_value= serialize($index_array);
+  setcookie($cookie_name, $cookie_value, time() + 86400, '/');
 }
 
 // init new question array
-function initQuestion()
+function initQuestions($told_quests)
 {
   // constant array of questions
 $questions = array(
@@ -78,8 +73,13 @@ $questions = array(
   for ($i = 0; $i < count($questions); $i++) {
     $question = $questions[$i];
     $question->index = $i;
-    $temp[$i] = $question;
+    for ($j = 0; $j < count($told_quests); $j++) {
+      $told_quest =$told_quests[$j];
+      if ($told_quest->index <> $question->index) {
+        $temp[$i] = $question;
+        break;
+      }
+    }
   }
-  echo($temp);
   return $temp;
 }
