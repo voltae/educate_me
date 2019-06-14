@@ -2,7 +2,13 @@ window.addEventListener('load', setup);
 
 function setup() {
     document.getElementById('next-quest').addEventListener('click', getNext);
-
+    if (window.XMLHttpRequest) {
+        xmlhttp =  new XMLHttpRequest();
+    } 
+ 
+    xmlhttp.open('GET', '/../php/server.php?param=initQuestion');
+    xmlhttp.send();
+    xmlhttp.addEventListener('load', logRespond);
 }
 
 
@@ -11,7 +17,7 @@ function getNext() {
         xmlhttp =  new XMLHttpRequest();
     } 
  
-    xmlhttp.open('GET', '/../php/server.php');
+    xmlhttp.open('GET', '/../php/server.php?param=getQuestion');
     xmlhttp.addEventListener('load', getRespond);
     xmlhttp.addEventListener('error', getError);
     xmlhttp.send();
@@ -66,6 +72,10 @@ function evaluateAnswer(element, answer) {
 function shuffleArray(array) {
     array.sort(() => Math.random - 0.5);
     return array;
+}
+
+function logRespond(event) {
+    console.log(XMLHttpRequest.responseText);
 }
 
 function getError() {
