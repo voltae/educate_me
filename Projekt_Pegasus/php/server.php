@@ -4,11 +4,12 @@ session_start();
 $session_name = 'user';
 $index_array = array();
 if (!isset($_SESSION[$session_name])) {
-  $_SESSION[$session_name] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-} else {
-  // get index array from cookie
-  $index_array = $_SESSION[$session_name];
+  $_SESSION[$session_name] = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14);
 }
+
+// get index array from session
+$index_array = $_SESSION[$session_name];
+
 // Question class definiton
 class Question
 {
@@ -29,18 +30,18 @@ $unsend = initQuestions($index_array);
 
 if (count($unsend) == 0) {
   $question = new Question('', '', '');
+  $question->index = -1;
+  $index_array = array();
   echo json_encode($question);
-  $_SESSION[$session_name] = [];
+  $_SESSION[$session_name] = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14);
 } else {
   $index = rand(0, count($unsend) - 1);
+  $unsend = array_values($unsend);
   $question = $unsend[$index];
-  $question->index = $index + 1;
-
+  
+  array_splice($_SESSION[$session_name], $index, 1);
   $jsonQuest = json_encode($question);
   echo $jsonQuest;
-  array_push($index_array, $index);
-  sort($index_array);
-  $_SESSION[$session_name] = $index_array;
 }
 
 // init new question array
@@ -77,8 +78,4 @@ function initQuestions($index_array)
   }
 
   return $temp;
-}
-
-class storedQuests {
-  
 }
