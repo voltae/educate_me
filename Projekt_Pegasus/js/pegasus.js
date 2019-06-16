@@ -19,7 +19,7 @@ function getRespond(event) {
     var respond = JSON.parse(event.target.responseText);
     var questionField = document.getElementById('question-field')
     // add the question text
-    questionField.getElementsByTagName('h3')[0].innerText= respond.index + ". Frage"; // this is the hesader h3
+    questionField.getElementsByTagName('h3')[0].innerText= respond.index + ". Frage"; // this is the header h3
     questionField.getElementsByTagName('p')[0].innerText = respond.question; // this is the question paragraph
 
     // add the answer buttons

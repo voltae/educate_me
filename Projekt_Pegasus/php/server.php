@@ -3,8 +3,11 @@ session_start();
 
 $session_name = 'user';
 $index_array = array();
+$predefinedQuestions = predefinedQuests();  // get the predefined quest array
+
+// if not set session cookie, create a new on with full index array
 if (!isset($_SESSION[$session_name])) {
-  $_SESSION[$session_name] = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14);
+  $_SESSION[$session_name] = getFullIndexArray(count($predefinedQuestions));
 }
 
 // get index array from session
@@ -13,11 +16,12 @@ $index_array = $_SESSION[$session_name];
 // Question class definiton
 class Question
 {
-  public $question;
+  public $question;  
   public $answer;
   public $index;
-  public $alternatives = [];
+  public $alternatives = [];  // alternative answers array
 
+  // constructior
   function __construct($question, $answer, $alternatives)
   {
     $this->question = $question;
@@ -25,30 +29,50 @@ class Question
     $this->alternatives = $alternatives;
   }
 }
+// get the questtions that had not been already send
+$unsend = initQuestions($predefinedQuestions, $index_array);
 
-$unsend = initQuestions($index_array);
-
+// if all questins had been send, return an index of -1 to signal the client cycle done
 if (count($unsend) == 0) {
   $question = new Question('', '', '');
   $question->index = -1;
   $index_array = array();
   echo json_encode($question);
-  $_SESSION[$session_name] = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14);
-} else {
-  $index = rand(0, count($unsend) - 1);
-  $unsend = array_values($unsend);
-  $question = $unsend[$index];
+  // and begin a new full cycle
+  $_SESSION[$session_name] = getFullIndexArray(count($predefinedQuestions));
+} 
+// in ohter case operate normal
+else {
+  $index = rand(0, count($unsend) - 1);   // get a random number of the reamined quests
+  $unsend = array_values($unsend);  // pick the corresponding item
+  $question = $unsend[$index];    // create an quest object
   
-  array_splice($_SESSION[$session_name], $index, 1);
-  $jsonQuest = json_encode($question);
-  echo $jsonQuest;
+  array_splice($_SESSION[$session_name], $index, 1);  // remove this index from session index array
+  $jsonQuest = json_encode($question);    // convert the object to json
+  echo $jsonQuest;    // and send it to the client.
 }
 
-// init new question array
-function initQuestions($index_array)
+// init new unsend quest array
+function initQuestions($questions, $index_array)
 {
+  
+  $temp = array();
+  // filter out all objects with a corresponing index in session index array
+  for ($i = 0; $i < count($questions); $i++) {
+    $question = $questions[$i];
+    $question->index = $i;
+    for ($j = 0; $j < count($index_array); $j++) {
+      if ($question->index == $index_array[$j]) {
+        $temp[$i] = $question;
+      }
+    }
+  }
+  return $temp;
+}
+
+function predefinedQuests() {
   // constant array of questions
-  $questions = array(
+  return array(
     new Question("Wie viel wiegt ein ausgewachsenes Nashorn?", "3400 kg", array("120 kg", "25 t", "8.000 kg")),
     new Question("Wie lange kann ein Blauwaal maximal unter Wasser bleiben, ohne Luft zu holen?", "50 Minuten", array('3 Stunden', '20 Sekunden', '1 Tag')),
     new Question("Wie viele Planeten existieren in unserem Sonnensystem?", "8", array("3", "9", "15")),
@@ -65,17 +89,12 @@ function initQuestions($index_array)
     new Question("Das wieviel-fache ihres Körpergewichtes können Ameisen tragen?", "30fach", array("2fach", "10fach", "140fach")),
     new Question("Wie groß kann ein Königspungiun werden?", "85-95cm", array("2m", "178 cm", "12 cm"))
   );
-  $temp = array();
-
-  for ($i = 0; $i < count($questions); $i++) {
-    $question = $questions[$i];
-    $question->index = $i;
-    for ($j = 0; $j < count($index_array); $j++) {
-      if ($question->index == $index_array[$j]) {
-        $temp[$i] = $question;
-      }
-    }
   }
-
+// create an index array with the given index count
+function getFullIndexArray($predefinedQuestsCount) {
+  $temp = array();
+  for ($i = 0; $i < $predefinedQuestsCount; $i++) {
+    $temp[$i] =$i;
+  }
   return $temp;
 }
