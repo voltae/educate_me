@@ -26,7 +26,7 @@ Nächster Request ist dann bereits Beginn eines neuen Fragenzyklus.
 Übertragen wird mittels **JSON Decoding** Client encodiert JSON und hat dann alle Informationen, grundlegend für Protokoll ist Objektdefinition. Beispiel einer überrtagenen JSON Quest:
 ```{"question":"Das wieviel-fache ihres K\u00f6rpergewichtes k\u00f6nnen Ameisen tragen?","answer":"30fach","index":13,"alternatives":["2fach","10fach","140fach"]}```
 ### Objekt Prototyp
-#### delaration
+#### declaration
 ```class Question
 {
   public $question;  
