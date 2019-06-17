@@ -1,7 +1,8 @@
 # educate_me
+# Allgemein
 Educational Web app for children aged 7-10
 ## Topic 
-asic science
+Basic Science
 
 ## Design Details
 ### Teach
@@ -13,32 +14,38 @@ Frage wird angezeigt, User hat Auswahl der Antworten anch Mulitple Choice Prinzi
 ### Test
 8 Fragen random ausgewählt. UI wie Practice aber mit mitprotokollieren der Anzahl der richtigen und falschen Antworten.
 ab 50% positiv -> Highscore wird automatisch erstellt, Smiley angezeigt; unter 50% -> Wiederholung nach einem Timer (bsp 30 sec; check ob Timer trotz refresh bestehen bleibt) möglich; sadface wird angezeigt. Es wird kein Highscore gespeichert.
-## Technische Implementierung
-Fragen und Antworten: Array (JSON List?);
-Da die Frge jeweils mehrere mögliche Antworten speichern kann, ist glaube ich besser, eine Objekt zu erstellen, das Frage und Antwort  gleichzeitig speichert. Die Fragen können dann als Objekt-Arra gespeichert werden.
+# Technische Implementierung
+Fragen und Antworten: Array (JSON List);
+Da die Frge jeweils mehrere mögliche Antworten speichern kann, ist glaube ich besser, ein Objekt zu erstellen, das Frage und Antwort  gleichzeitig speichert. Die Fragen können dann als Objekt-Arra gespeichert werden.
+
+## Server
+Verwendung von serverseitigen _PHP_ um Client Fragen zu schicken. 
+### Protokoll
+Server ist als **stateful Server** ausgeführt, d.h. er führt Buch, welche Fragen dem Clienten bereits geschickt wurden. aus den verbleibenden sucht Server jeweils zufällig eine Frage aus und schickt diese nach jedem Ajax-Request an Client. Falls alle Fragen durch (Zyklus beendet) schickt Server eine quest mit **index -1** um Ende zu signalisieren.
+Nächster Request ist dann bereits Beginn eines neuen Fragenzyklus.
+Übertragen wird mittels **JSON Decoding** Client encodiert JSON und hat dann alle Informationen, grundlegend für Protokoll ist Objektdefinition. Beispiel einer überrtagenen JSON Quest:
+```{"question":"Das wieviel-fache ihres K\u00f6rpergewichtes k\u00f6nnen Ameisen tragen?","answer":"30fach","index":13,"alternatives":["2fach","10fach","140fach"]}```
 ### Objekt Prototyp
-#### delaration
-```function Question = (question, answer, opional) {
-    this.question = question;
-    this.answer = answer
-    this.opional = optional;
-}
-```
-optional ist dabei ein Array von Strings.
-#### implement
-```{ 
-    "wieviel wiegt ein halbers rhinozerus",
-    "halb so viel wie ein ganzes"
-    {
-        "was, halbe rhinozerusse gibts wirklich",
-        "och ne schon wieder der mann mit dem messer",
-        "huh, schätze mal so um die 42" 
-    }
+#### declaration
+```class Question
+{
+  public $question;  
+  public $answer;
+  public $index;
+  public $alternatives = [];  // alternative answers array
 }
 ```
 
+## Client
+### Request
+Mittels AJAX nach jedem Ckick auf Frage eine asynchronen Request an Server
+### Respond
+* Parsen des JSON Resond, aufteilen der Nachricht auf entsprechende Elemente. Frage in Fragen-Feld. Antworten in entsprechende Buttons. **Antwortbuttons zufällig durcheinandergemischt**, sonst wird antworten einfach :-) 
+* Überprüfen der Antwort mittels Logik
+* Feedback an Spieler
 
-## Task detail
+---
+# Task detail
 * Create an educational Web app for children aged 7-10 (2nd grade++)
 * Choose one educational subject: 
   1. basic math
