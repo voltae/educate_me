@@ -4,5 +4,32 @@
 } 
 
 body {
+	background-image: url("/img/milky_way.jpg");
+	background-size: 100% 100%;
+	background-color: black;
     padding: 30px;;
 }
+
+.bg-1 {
+	color: white;	
+}
+
+.bg-2 {
+	background-color: transparent;
+	color: white;
+}
+
+
+
+.test {
+	background-color: red;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  
+  color: white;
+  text-align: center;
