@@ -25,14 +25,18 @@ function setState(event) {
     }
     xmlhttp.open('POST', '/../php/changeState.php');
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    var name = event.target.className;
+    let name = event.target.className;
     if (name.includes('nav-link')) {
        name = name.replace('nav-link', '');
     } else if (name.includes('dropdown-item')) {
         name = name.replace('dropdown-item', '');
     }
     name = name.trim();
-    xmlhttp.send("type=" +name);
+    if (name === 'exam') {
+        xmlhttp.send("type=" +name +'&reset=true'); // if exam, begin with the 1. question
+    } else {
+        xmlhttp.send("type=" + name);
+    }
 }
 function getRespond(event) {
     let respond = JSON.parse(event.target.responseText);
@@ -56,8 +60,8 @@ function getRespond(event) {
 
         answers = shuffle(answers);
         answers.forEach(element => {
-            var td = document.createElement('td');
-            var button = document.createElement('button');
+            let td = document.createElement('td');
+            let button = document.createElement('button');
             button.addEventListener('click', function() {
                 evaluateAnswer(element, respond.answer);
             });

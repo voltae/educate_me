@@ -15,12 +15,12 @@ if (!isset($_SESSION[SESSION_NAME])) {
     $_SESSION[TYPE_USE] = 'teach';
 }
 
-$type = $_POST[TYPE_USE];
-$reset = $_POST[RESET];
+$reset = $_SESSION[RESET];
 
-// begin with full array
+// if reset is set begin with new array
 if ($reset == 'true') {
     resetCurrentSession($predefinedQuestions);
+    $_SESSION[RESET] = 'false'; // restore the normal working
 }
 
 // get index array from session

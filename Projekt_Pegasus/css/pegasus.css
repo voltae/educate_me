@@ -4,10 +4,10 @@
 } 
 
 body {
-	background-image: url("/img/milky_way.jpg");
+	background-image: url("../img/milky_way.jpg");
 	background-size: 100% 100%;
 	background-color: black;
-    padding: 30px;;
+    padding: 30px;
 }
 
 .bg-1 {
@@ -26,10 +26,11 @@ body {
 }
 
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  
-  color: white;
-  text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    color: white;
+    text-align: center;
+}
