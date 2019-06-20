@@ -8,7 +8,7 @@ function setup() {
 function getNext() {
     if (window.XMLHttpRequest) {
         xmlhttp =  new XMLHttpRequest();
-    } 
+    }
     xmlhttp.open('GET', '/../php/server.php');
     xmlhttp.addEventListener('load', getRespond);
     xmlhttp.addEventListener('error', getError);
@@ -63,8 +63,9 @@ function evaluateAnswer(element, answer) {
         feedback.innerText = "Super, diese Antwort ist richtig!";
     } else {
         feedback.className='alert alert-warning';
-        feedback.innerText = "Schade. Diese Antwort ist leider falsch!";  
+        feedback.innerText = "Schade. Diese Antwort ist leider falsch!";
     }
+    getNext();
 }
 
 function shuffleArray(array) {
