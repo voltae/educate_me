@@ -1,17 +1,17 @@
 <?php
 session_start();
 
-$session_name = 'user';
+const SESSION_NAME = 'user';
 $index_array = array();
 $predefinedQuestions = predefinedQuests();  // get the predefined quest array
 
 // if not set session cookie, create a new on with full index array
-if (!isset($_SESSION[$session_name])) {
-  $_SESSION[$session_name] = getFullIndexArray(count($predefinedQuestions));
+if (!isset($_SESSION[SESSION_NAME])) {
+  $_SESSION[SESSION_NAME] = getFullIndexArray(count($predefinedQuestions));
 }
 
 // get index array from session
-$index_array = $_SESSION[$session_name];
+$index_array = $_SESSION[SESSION_NAME];
 
 // Question class definiton
 class Question
@@ -39,7 +39,7 @@ if (count($unsend) == 0) {
   $index_array = array();
   echo json_encode($question);
   // and begin a new full cycle
-  $_SESSION[$session_name] = getFullIndexArray(count($predefinedQuestions));
+  $_SESSION[SESSION_NAME] = getFullIndexArray(count($predefinedQuestions));
 } 
 // in ohter case operate normal
 else {
@@ -47,7 +47,7 @@ else {
   $unsend = array_values($unsend);  // pick the corresponding item
   $question = $unsend[$index];    // create an quest object
   
-  array_splice($_SESSION[$session_name], $index, 1);  // remove this index from session index array
+  array_splice($_SESSION[SESSION_NAME], $index, 1);  // remove this index from session index array
   $jsonQuest = json_encode($question);    // convert the object to json
   echo $jsonQuest;    // and send it to the client.
 }
@@ -55,7 +55,6 @@ else {
 // init new unsend quest array
 function initQuestions($questions, $index_array)
 {
-  
   $temp = array();
   // filter out all objects with a corresponing index in session index array
   for ($i = 0; $i < count($questions); $i++) {
@@ -97,4 +96,10 @@ function getFullIndexArray($predefinedQuestsCount) {
     $temp[$i] =$i;
   }
   return $temp;
+}
+
+// reset the current session
+function resetCurrentSession($predefinedQuestions) {
+  $_SESSION[SESSION_NAME] = getFullIndexArray(count($predefinedQuestions));
+  
 }
