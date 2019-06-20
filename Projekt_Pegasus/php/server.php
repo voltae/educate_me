@@ -22,20 +22,6 @@ $reset = $_POST[RESET];
 if ($reset == 'true') {
     resetCurrentSession($predefinedQuestions);
 }
-echo $type;
-switch ($type) {
-    case 'exam':
-        $_SESSION[RANDOM] = 'true';
-        resetCurrentSession($predefinedQuestions);
-        break;
-    case 'teach':
-    case 'test':
-        $_SESSION[RANDOM] = 'false';
-        break;
-    default:
-        $_SESSION[TYPE_USE] = $type;
-        break;
-}
 
 // get index array from session
 $index_array = $_SESSION[SESSION_NAME];

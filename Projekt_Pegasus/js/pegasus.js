@@ -23,7 +23,7 @@ function setState(event) {
     if (window.XMLHttpRequest) {
         xmlhttp =  new XMLHttpRequest();
     }
-    xmlhttp.open('POST', '/../php/server.php');
+    xmlhttp.open('POST', '/../php/changeState.php');
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var name = event.target.className;
     if (name.includes('nav-link')) {
