@@ -39,11 +39,11 @@ function sendQuestions ($predefinedQuestions, $index_array, $random)
     if (count($unsend) == 0) {
         $question = new Question('', '', '');
         $question->index = -1;
-        $index_array = array();
         echo json_encode($question);
+
         // and begin a new full cycle
         $_SESSION[SESSION_NAME] = getFullIndexArray(count($predefinedQuestions));
-    } // in ohter case operate normal
+    } // in other case operate normal
     else {
         // if random mode has been set, pick a random number from the unsend, else simple take the first
         $random == 'true'? $index = rand(0, count($unsend) - 1) : $index = 0;

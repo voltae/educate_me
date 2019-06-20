@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7437f359-22e4-4e54-bccc-d5992bd32c5e" name="Default Changelist" comment="">
+    <list default="true" id="7437f359-22e4-4e54-bccc-d5992bd32c5e" name="Default Changelist" comment="css -&gt; bug fix End-Caret was missing&#10;js -&gt; changed call to server. client informs sender if switch to exam. server resets the question and send question in random order&#10;changeState.php -&gt; change Stae nwo in a separate file, to not collide with ordinary question send&#10;server.php -&gt; consumes reset flag and behave as told&#10;exam.html handle exam i a separate html file">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projekt_Pegasus/exam.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projekt_Pegasus/exam.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projekt_Pegasus/js/pegasus.js" beforeDir="false" afterPath="$PROJECT_DIR$/Projekt_Pegasus/js/pegasus.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projekt_Pegasus/php/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/Projekt_Pegasus/php/server.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,42 +20,125 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/js/pegasus.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="740">
+              <caret line="106" column="20" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/css/pegasus.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="620">
+              <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/exam.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="900">
+              <caret line="60" column="18" lean-forward="true" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
+              <folding>
+                <element signature="e#548#554#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/php/server.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="532">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/php/changeState.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/php/test.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
-  <component name="PhpDebugGeneral" hide_empty_superglobals="false" listening_started="true" />
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="voltae &lt;ic17b096@technikum-wien.at&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Projekt_Pegasus/php/test.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/Projekt_Pegasus/index.html" />
+        <option value="$PROJECT_DIR$/Projekt_Pegasus/php/changeState.php" />
+        <option value="$PROJECT_DIR$/Projekt_Pegasus/css/pegasus.css" />
+        <option value="$PROJECT_DIR$/Projekt_Pegasus/js/pegasus.js" />
+        <option value="$PROJECT_DIR$/Projekt_Pegasus/php/server.php" />
+        <option value="$PROJECT_DIR$/Projekt_Pegasus/exam.html" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpDebugGeneral" break_at_first_line="true" hide_empty_superglobals="false" />
   <component name="PhpServers">
     <servers>
       <server host="127.0.0.1" id="db7e693c-b739-494d-b6f5-13379f154a6f" name="MAMP Server" port="8888" />
     </servers>
   </component>
+  <component name="PhpWebServerValidation" path_to_validation_script="$PROJECT_DIR$" selected_validation_type="LOCAL" web_path_to_validation_script="http://127.0.0.1:8888" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 5.6.2" />
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/educate_me.iml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-      </list>
-    </option>
-  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="20" />
-    <option name="y" value="43" />
-    <option name="width" value="1400" />
-    <option name="height" value="837" />
+    <option name="y" value="23" />
+    <option name="width" value="1566" />
+    <option name="height" value="1669" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -85,8 +171,11 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
   </component>
   <component name="RunDashboard">
@@ -125,31 +214,68 @@
       <workItem from="1560845481454" duration="145000" />
       <workItem from="1560847186607" duration="811000" />
       <workItem from="1560852074791" duration="926000" />
+      <workItem from="1561005945845" duration="3472000" />
+      <workItem from="1561014101087" duration="185000" />
+      <workItem from="1561014298825" duration="11363000" />
+      <workItem from="1561046628728" duration="5164000" />
+      <workItem from="1561058817932" duration="592000" />
     </task>
+    <task id="LOCAL-00001" summary="js function setState -&gt; informs the server of the client state change. i.e. test to exam&#10;php server now reflects the state of client. in 'exam' questions will be randomized, in 'test' and 'teach' not.&#10;note 'exam' will start from the top. it is clients duty to avoid calling agian before all 15 questions are done.">
+      <created>1561038993341</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1561038993342</updated>
+    </task>
+    <task id="LOCAL-00002" summary="ChangesStae is now different php-file. divide between normal use and change state">
+      <created>1561045317856</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1561045317856</updated>
+    </task>
+    <task id="LOCAL-00003" summary="css -&gt; bug fix End-Caret was missing&#10;js -&gt; changed call to server. client informs sender if switch to exam. server resets the question and send question in random order&#10;changeState.php -&gt; change Stae nwo in a separate file, to not collide with ordinary question send&#10;server.php -&gt; consumes reset flag and behave as told&#10;exam.html handle exam i a separate html file">
+      <created>1561059171640</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1561059171640</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1882000" />
+    <option name="totallyTimeSpent" value="22658000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="20" y="43" width="1400" height="837" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1566" height="1669" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2569956" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24146982" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32885906" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.26823083" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32974002" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="PHP-CGI Server" order="12" weight="0.32974002" />
+      <window_info active="true" anchor="bottom" id="Messages" order="13" visible="true" weight="0.32974002" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -159,13 +285,39 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="js function setState -&gt; informs the server of the client state change. i.e. test to exam&#10;php server now reflects the state of client. in 'exam' questions will be randomized, in 'test' and 'teach' not.&#10;note 'exam' will start from the top. it is clients duty to avoid calling agian before all 15 questions are done." />
+    <MESSAGE value="ChangesStae is now different php-file. divide between normal use and change state" />
+    <MESSAGE value="css -&gt; bug fix End-Caret was missing&#10;js -&gt; changed call to server. client informs sender if switch to exam. server resets the question and send question in random order&#10;changeState.php -&gt; change Stae nwo in a separate file, to not collide with ordinary question send&#10;server.php -&gt; consumes reset flag and behave as told&#10;exam.html handle exam i a separate html file" />
+    <option name="LAST_COMMIT_MESSAGE" value="css -&gt; bug fix End-Caret was missing&#10;js -&gt; changed call to server. client informs sender if switch to exam. server resets the question and send question in random order&#10;changeState.php -&gt; change Stae nwo in a separate file, to not collide with ordinary question send&#10;server.php -&gt; consumes reset flag and behave as told&#10;exam.html handle exam i a separate html file" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Projekt_Pegasus/js/pegasus.js</url>
+          <line>58</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Projekt_Pegasus/js/pegasus.js</url>
+          <line>22</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/Projekt_Pegasus/php/test.php</url>
+          <line>1</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/Projekt_Pegasus/php/changeState.php</url>
+          <line>8</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/Projekt_Pegasus/php/server.php</url>
-          <line>13</line>
-          <option name="timeStamp" value="2" />
+          <line>17</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -178,10 +330,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/img/milky_way.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/img/menu.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/img/highscore.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/php/changeState.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/php/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/css/pegasus.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/js/pegasus.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="740">
+          <caret line="106" column="20" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/php/server.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="532">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/exam.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="60" column="18" lean-forward="true" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
+          <folding>
+            <element signature="e#548#554#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

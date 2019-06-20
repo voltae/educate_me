@@ -40,7 +40,7 @@ function setState(event) {
 }
 function getRespond(event) {
     let respond = JSON.parse(event.target.responseText);
-    let questionField = document.getElementById('question-field')
+    let questionField = document.getElementById('question-field');
     if(parseInt(respond.index) >= 0){
         // add the question text
         questionField.getElementsByTagName('h3')[0].innerText= getCount() + ". Frage"; // this is the header h3
