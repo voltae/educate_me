@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/pegasus.css">
-    <script src="js/pegasus.js"></script>
+    <script src="js/exam.js"></script>
     <title>Pr&uuml;fung</title>
 </head>
 
@@ -23,25 +23,9 @@
         <!-- Links -->
         <ul class="navbar-nav switchState">
             <li class="nav-item">
-                <a class="nav-link teach" href="#">Lernen</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link test" href="#">&Uuml;ben</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link exam" href="#">Test</a>
-            </li>
 
-            <!-- Dropdown -->
-            <li class="nav-item dropdown switchState">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    Dropdown link
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item teach" href="#">Lernen</a>
-                    <a class="dropdown-item test" href="#">&Uuml;ben</a>
-                    <a class="dropdown-item exam" href="#">Test</a>
-                </div>
+            <li class="nav-item"><a class="nav-link" id='abort' href="index.html">Abbrechen</a></li>
+            <li class="nav-item"><a class="nav-link" id='restart' href="#">Wiederholen</a></li>
             </li>
         </ul>
     </nav>
@@ -52,11 +36,11 @@
         <div class="jumbotron jumbotron-fluid>">
             <div class="container">
                 <div class="row">
-                    <h1 class="display-4">Primary Science - Pr&uuml;fungsmodul</h1>
+                    <h1 class="display-4" id="feedback" >Primary Science - Pr&uuml;fungsmodul</h1>
                 </div>
                 <div class="row">
-                    <h2 class="col" id="answers">1</h2>
-                    <h2 class="col" id="total">15</h2>
+                    <h2 class="col" id="answers">0</h2>
+                    <h2 class="col" id="total"></h2>
                 </div>
             </div>
         </div>
