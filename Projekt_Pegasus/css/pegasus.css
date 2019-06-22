@@ -3,11 +3,22 @@
     border-radius: 5px;
 } 
 
-body {
-	background-image: url("../img/milky_way.jpg");
-	background-size: 100% 100%;
-	background-color: black;
-    padding: 30px;
+body{
+	background-image: url("/img/stars2.jpg");
+	background-repeat: no-repeat;
+}
+
+h1 {
+	color: white;
+	font-size: 25pt;
+	font-family: comic sans ms;
+	text-align: center;
+}
+
+p {
+	font-size: 20pt;
+	font-family: comic sans ms;
+	text-align: center;
 }
 
 .bg-1 {
@@ -23,7 +34,48 @@ body {
 	background-color: red;
 }
 
-.footer {
+.button_start {
+display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  
+}
+
+.button_start span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button_start span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button_start:hover span {
+  padding-right: 25px;
+}
+
+.button_start:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+footer {
     position: fixed;
     left: 0;
     bottom: 0;
