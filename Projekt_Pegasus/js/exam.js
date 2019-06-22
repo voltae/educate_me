@@ -13,8 +13,15 @@ function start() {
     let menuitem = document.getElementById('restart');
     menuitem.removeEventListener('click', start);
     menuitem.classList.add('disabled');     // set menu item inactive;
+
     document.getElementById('feedback').innerText = 'Primary Science - Prüfungsmodul';
     document.getElementById('answers').innerText = '0';
+
+    // start nerw result counting
+    result.resetCorrect();
+    result.resetCount();
+    result.setCurrentExam(true);
+    document.getElementById('exam-field').hidden = false;
 
 }
 // class function for result protocol
@@ -22,6 +29,7 @@ class Results {
     constructor () {
         this.count = 0;
         this.correct = 0;
+        this.isCurrentExam = false;
     }
 
     incrementCount() {
@@ -42,16 +50,27 @@ class Results {
     resetCorrect() {
         this.correct = 0
     }
+
+    isCurrentExam() {
+        return this.isCurrentExam;
+    }
+
+    setCurrentExam(value) {
+        this.isCurrentExam = value;
+    }
 }
 
+
 function getNext() {
-    if (window.XMLHttpRequest) {
-        xmlhttp =  new XMLHttpRequest();
+    if (result.isCurrentExam) {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        }
+        xmlhttp.open('GET', '/../php/server.php');
+        xmlhttp.addEventListener('load', getRespond);
+        xmlhttp.addEventListener('error', getError);
+        xmlhttp.send();
     }
-    xmlhttp.open('GET', '/../php/server.php');
-    xmlhttp.addEventListener('load', getRespond);
-    xmlhttp.addEventListener('error', getError);
-    xmlhttp.send();
 }
 
 function getRespond(event) {
@@ -67,10 +86,14 @@ function getRespond(event) {
         updateQuestions(respond);
 
     } else {
-        document.getElementById('feedback').innerText ='Du hast '+ result.getCorrect() + ' Fragen von ' +result.getCount()+ ' richtig beantwortet!'
+        document.getElementById('feedback').innerText ='Du hast '+ result.getCorrect() + ' Fragen von ' +result.getCount()+ ' richtig beantwortet!';
        let menuitem =  document.getElementById('restart');
         menuitem.addEventListener('click', start); // add listener to start again
         menuitem.classList.remove('disabled');
+        document.getElementById('answers').innerText= (result.getCorrect() / result.getCount() * 100).toFixed(0) + " % richtig"; // this is the header h3
+        result.setCurrentExam(false);
+        document.getElementById('exam-field').hidden = true;
+
     }
 }
 
