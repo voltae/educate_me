@@ -1,4 +1,5 @@
 window.addEventListener('load', setup);
+var filename;
 
 function setup() {
     document.getElementById('next-quest').addEventListener('click', getNext);
@@ -6,6 +7,9 @@ function setup() {
     for (menuItem of stateItems) {
         menuItem.addEventListener('click', setState);
     }
+
+    var url = document.URL;
+    filename = url.split('/').pop().split('.').shift();
 }
 
 
@@ -57,19 +61,27 @@ function getRespond(event) {
         table.appendChild(tr);
         let answers = respond.alternatives;
         answers.push(respond.answer);   // add he answer to the buttons
-
-        answers = shuffle(answers);
-        answers.forEach(element => {
-            let td = document.createElement('td');
-            let button = document.createElement('button');
-            button.addEventListener('click', function() {
-                evaluateAnswer(element, respond.answer);
-            });
-            button.innerText = element;
-            button.className ='btn btn-outline-primary';
-            td.appendChild(button);
-            tr.appendChild(td);
-        });
+        if(filename == 'teach'){  //add only one button with the correct answer
+          let td = document.createElement('td');
+          let button = document.createElement('button');
+          button.innerText = answers.shift();
+          button.className ='btn btn-outline-primary';
+          td.appendChild(button);
+          tr.appendChild(td);
+        } else if (filename == "exercise") {
+          answers = shuffle(answers);
+          answers.forEach(element => {
+              let td = document.createElement('td');
+              let button = document.createElement('button');
+              button.addEventListener('click', function() {
+                  evaluateAnswer(element, respond.answer);
+              });
+              button.innerText = element;
+              button.className ='btn btn-outline-primary';
+              td.appendChild(button);
+              tr.appendChild(td);
+          });
+        }
     } else {
         counter = 0;
         getNext();
