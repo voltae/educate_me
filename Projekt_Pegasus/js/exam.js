@@ -23,6 +23,7 @@ function start() {
     result.setCurrentExam(true);
     document.getElementById('exam-field').hidden = false;
 
+
 }
 // class function for result protocol
 class Results {
