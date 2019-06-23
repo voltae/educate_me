@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7437f359-22e4-4e54-bccc-d5992bd32c5e" name="Default Changelist" comment="css -&gt; bug fix End-Caret was missing&#10;js -&gt; changed call to server. client informs sender if switch to exam. server resets the question and send question in random order&#10;changeState.php -&gt; change Stae nwo in a separate file, to not collide with ordinary question send&#10;server.php -&gt; consumes reset flag and behave as told&#10;exam.html handle exam i a separate html file">
+    <list default="true" id="7437f359-22e4-4e54-bccc-d5992bd32c5e" name="Default Changelist" comment="Implemented high score.&#10;created new js file &quot;process - high score&quot; to divide logic from site specific content.&#10;all highscore logic is now implemented in process_highscore.js and highscore.js is only for displaying.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projekt_Pegasus/exam.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projekt_Pegasus/exam.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projekt_Pegasus/js/pegasus.js" beforeDir="false" afterPath="$PROJECT_DIR$/Projekt_Pegasus/js/pegasus.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projekt_Pegasus/php/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/Projekt_Pegasus/php/server.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,19 +18,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/js/pegasus.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="740">
-              <caret line="106" column="20" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/css/pegasus.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+            <state relative-caret-position="615">
+              <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -41,56 +29,80 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
+            <state relative-caret-position="255">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/exam.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/teach.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/highscore.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="975">
+              <caret line="65" column="16" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/Todo.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/js/highscore.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" selection-start-line="7" selection-end-line="9" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/js/process_highscore.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/js/highscore_js_notes.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="240">
+                <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/exam.html">
+        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/js/exam.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="60" column="18" lean-forward="true" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
-              <folding>
-                <element signature="e#548#554#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/php/server.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/php/changeState.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/php/test.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="258">
+              <caret line="146" column="41" selection-start-line="146" selection-start-column="41" selection-end-line="146" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -101,6 +113,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -120,10 +133,15 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Projekt_Pegasus/index.html" />
         <option value="$PROJECT_DIR$/Projekt_Pegasus/php/changeState.php" />
-        <option value="$PROJECT_DIR$/Projekt_Pegasus/css/pegasus.css" />
         <option value="$PROJECT_DIR$/Projekt_Pegasus/js/pegasus.js" />
         <option value="$PROJECT_DIR$/Projekt_Pegasus/php/server.php" />
+        <option value="$PROJECT_DIR$/Projekt_Pegasus/css/pegasus.css" />
+        <option value="$PROJECT_DIR$/Projekt_Pegasus/js/highscore_js_notes.md" />
+        <option value="$PROJECT_DIR$/Projekt_Pegasus/js/highscore.js" />
         <option value="$PROJECT_DIR$/Projekt_Pegasus/exam.html" />
+        <option value="$PROJECT_DIR$/Projekt_Pegasus/js/process_highscore.js" />
+        <option value="$PROJECT_DIR$/Projekt_Pegasus/highscore.html" />
+        <option value="$PROJECT_DIR$/Projekt_Pegasus/js/exam.js" />
       </list>
     </option>
   </component>
@@ -137,8 +155,8 @@
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 5.6.2" />
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1566" />
-    <option name="height" value="1669" />
+    <option name="width" value="1307" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -161,7 +179,13 @@
               <item name="educate_me" type="b2602c69:ProjectViewProjectNode" />
               <item name="educate_me" type="462c0819:PsiDirectoryNode" />
               <item name="Projekt_Pegasus" type="462c0819:PsiDirectoryNode" />
-              <item name="php" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="educate_me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="educate_me" type="462c0819:PsiDirectoryNode" />
+              <item name="Projekt_Pegasus" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -218,7 +242,17 @@
       <workItem from="1561014101087" duration="185000" />
       <workItem from="1561014298825" duration="11363000" />
       <workItem from="1561046628728" duration="5164000" />
-      <workItem from="1561058817932" duration="592000" />
+      <workItem from="1561058817932" duration="790000" />
+      <workItem from="1561102388028" duration="7440000" />
+      <workItem from="1561117078031" duration="36000" />
+      <workItem from="1561118704418" duration="309000" />
+      <workItem from="1561120991300" duration="242000" />
+      <workItem from="1561190914462" duration="2174000" />
+      <workItem from="1561216882620" duration="44000" />
+      <workItem from="1561217062728" duration="12887000" />
+      <workItem from="1561267688709" duration="3346000" />
+      <workItem from="1561299784992" duration="1619000" />
+      <workItem from="1561302289317" duration="37000" />
     </task>
     <task id="LOCAL-00001" summary="js function setState -&gt; informs the server of the client state change. i.e. test to exam&#10;php server now reflects the state of client. in 'exam' questions will be randomized, in 'test' and 'teach' not.&#10;note 'exam' will start from the top. it is clients duty to avoid calling agian before all 15 questions are done.">
       <created>1561038993341</created>
@@ -241,11 +275,46 @@
       <option name="project" value="LOCAL" />
       <updated>1561059171640</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="pegasus.js -&gt; fixed missing semikolon&#10;server.php -&gt; removed unused variable declaration">
+      <created>1561059556078</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1561059556078</updated>
+    </task>
+    <task id="LOCAL-00005" summary="exam.html -&gt; added new html file for exam purpose&#10;exam.js -&gt; added new js logic fro exam evaluation">
+      <created>1561112833443</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1561112833443</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fixed bug, quests can be answered when test is over.&#10;indruduced a boolean, isCurrentExam. nextQuest() will return question only when boolean is true.">
+      <created>1561193481943</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1561193481943</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fixed bug, quests can be answered when test is over.&#10;introduced a boolean, isCurrentExam. nextQuest() will return question only when boolean is true.&#10;&#10;Signed-off-by: voltae &lt;ic17b096@technikum-wien.at&gt;">
+      <created>1561193883276</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1561193883276</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Implemented high score.&#10;created new js file &quot;process - high score&quot; to divide logic from site specific content.&#10;all highscore logic is now implemented in process_highscore.js and highscore.js is only for displaying.">
+      <created>1561302319529</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1561302319529</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22658000" />
+    <option name="totallyTimeSpent" value="50990000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -257,15 +326,39 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1566" height="1669" extended-state="0" />
+    <frame x="0" y="23" width="1307" height="877" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24146982" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25533596" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32885906" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.26823083" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.26751593" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32974002" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32974002" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="PHP-CGI Server" order="12" weight="0.32974002" />
+      <window_info active="true" anchor="bottom" id="Messages" order="13" visible="true" weight="0.32866243" />
+      <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.32974002" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18636848" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32885906" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.26751593" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32974002" />
@@ -276,11 +369,12 @@
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="PHP-CGI Server" order="12" weight="0.32974002" />
       <window_info active="true" anchor="bottom" id="Messages" order="13" visible="true" weight="0.32974002" />
+      <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.32974002" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -289,19 +383,25 @@
     <MESSAGE value="js function setState -&gt; informs the server of the client state change. i.e. test to exam&#10;php server now reflects the state of client. in 'exam' questions will be randomized, in 'test' and 'teach' not.&#10;note 'exam' will start from the top. it is clients duty to avoid calling agian before all 15 questions are done." />
     <MESSAGE value="ChangesStae is now different php-file. divide between normal use and change state" />
     <MESSAGE value="css -&gt; bug fix End-Caret was missing&#10;js -&gt; changed call to server. client informs sender if switch to exam. server resets the question and send question in random order&#10;changeState.php -&gt; change Stae nwo in a separate file, to not collide with ordinary question send&#10;server.php -&gt; consumes reset flag and behave as told&#10;exam.html handle exam i a separate html file" />
-    <option name="LAST_COMMIT_MESSAGE" value="css -&gt; bug fix End-Caret was missing&#10;js -&gt; changed call to server. client informs sender if switch to exam. server resets the question and send question in random order&#10;changeState.php -&gt; change Stae nwo in a separate file, to not collide with ordinary question send&#10;server.php -&gt; consumes reset flag and behave as told&#10;exam.html handle exam i a separate html file" />
+    <MESSAGE value="pegasus.js -&gt; fixed missing semikolon&#10;server.php -&gt; removed unused variable declaration" />
+    <MESSAGE value="exam.html -&gt; added new html file for exam purpose&#10;exam.js -&gt; added new js logic fro exam evaluation" />
+    <MESSAGE value="fixed bug, quests can be answered when test is over.&#10;indruduced a boolean, isCurrentExam. nextQuest() will return question only when boolean is true." />
+    <MESSAGE value="hide quests and answers, when test is over.&#10;reshow the field when test starts." />
+    <MESSAGE value="fixed bug, quests can be answered when test is over.&#10;introduced a boolean, isCurrentExam. nextQuest() will return question only when boolean is true.&#10;&#10;Signed-off-by: voltae &lt;ic17b096@technikum-wien.at&gt;" />
+    <MESSAGE value="Implemented high score.&#10;created new js file &quot;process - high score&quot; to divide logic from site specific content.&#10;all highscore logic is now implemented in process_highscore.js and highscore.js is only for displaying." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented high score.&#10;created new js file &quot;process - high score&quot; to divide logic from site specific content.&#10;all highscore logic is now implemented in process_highscore.js and highscore.js is only for displaying." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/Projekt_Pegasus/js/pegasus.js</url>
-          <line>58</line>
+          <line>62</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/Projekt_Pegasus/js/pegasus.js</url>
-          <line>22</line>
+          <line>26</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -316,7 +416,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/Projekt_Pegasus/php/server.php</url>
-          <line>17</line>
+          <line>18</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
@@ -330,14 +430,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/img/milky_way.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/img/milky_way.jpg" />
     <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/img/menu.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/img/highscore.png">
       <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/exercise.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="89" selection-end-column="7" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
@@ -346,10 +451,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/php/changeState.php">
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/php/server.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="960">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
         </state>
       </provider>
     </entry>
@@ -360,41 +465,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/css/pegasus.css">
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/php/changeState.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
+        <state relative-caret-position="345">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/js/pegasus.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="106" column="20" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="20" />
+        <state relative-caret-position="1725">
+          <caret line="127" selection-start-line="127" selection-end-line="130" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/php/server.php">
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/css/pegasus.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="615">
+          <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/exam.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="60" column="18" lean-forward="true" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
-          <folding>
-            <element signature="e#548#554#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="180">
+          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/teach.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/highscore.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="65" column="16" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/Todo.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/js/highscore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="9" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/js/process_highscore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/js/highscore_js_notes.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="240">
+            <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projekt_Pegasus/js/exam.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="146" column="41" selection-start-line="146" selection-start-column="41" selection-end-line="146" selection-end-column="41" />
         </state>
       </provider>
     </entry>
