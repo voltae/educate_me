@@ -33,32 +33,16 @@ class Results {
         this.isCurrentExam = false;
     }
 
-    incrementCount() {
-        this.count++;
-    }
-    getCount() {
-        return this.count;
-    }
-    resetCount() {
-        this.count = 0
-    }
-    incrementCorrect() {
-        this.correct++;
-    }
-    getCorrect() {
-        return this.correct;
-    }
-    resetCorrect() {
-        this.correct = 0
-    }
+    incrementCount() { this.count++; }
+    getCount() { return this.count; }
+    resetCount() { this.count = 0 }
 
-    isCurrentExam() {
-        return this.isCurrentExam;
-    }
+    incrementCorrect() { this.correct++;}
+    getCorrect() { return this.correct; }
+    resetCorrect() { this.correct = 0; }
 
-    setCurrentExam(value) {
-        this.isCurrentExam = value;
-    }
+    isCurrentExam() { return this.isCurrentExam; }
+    setCurrentExam(value) { this.isCurrentExam = value; }
 }
 
 
@@ -96,7 +80,8 @@ function getRespond(event) {
         document.getElementById('answers').innerText= score + " % richtig"; // this is the header h3
         result.setCurrentExam(false);
         document.getElementById('exam-field').hidden = !result.isCurrentExam;  // if current exam not running set to true
-        setHighscore(score);        // set highscore
+        // set highscore only if score is better than the least entry in highscore
+        if (isValueInHighscore(score)) { setHighscore(score); }
     }
 }
 

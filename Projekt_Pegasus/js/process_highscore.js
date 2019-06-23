@@ -9,14 +9,16 @@
 // key in localStorage
 const USERS = 'users';
 
+// max amount of entries
+const MAX = 10;
+
 // Define object
 function User(name, score) {
 
     this.name = name;
     this.score = score;
 }
-
-function updateHighscore(newUserString) {
+function getScoreObjects() {
     // retrieve highscore from localStorage
     let usersString = localStorage.getItem(USERS);
     // parse users
@@ -25,16 +27,33 @@ function updateHighscore(newUserString) {
     if (users == null) {
         users = [];
     }
-    let newUser =JSON.parse(newUserString);
-    users.push(newUser);
+    return users;
+}
 
+function updateHighscore(newUserString) {
+    let usersTemp = getScoreObjects();
+    let newUser =JSON.parse(newUserString);
+    usersTemp.push(newUser);
+    let user = [];
+    // alow only a MAX amount of entries in highscore.
+    for (let i = 0; i < MAX; i++) {
+        user[i] = usersTemp[i];
+    }
     // sort new highscore
     users.sort(compare);
     // store stringified user array.
     localStorage.setItem(USERS, JSON.stringify(users));
-
 }
 
+function isValueInHighscore (score) {
+    let users = getScoreObjects();
+    // get last object
+    for (let user of users) {
+        if (user.score < score)
+            return true;
+    }
+    return false;
+}
 // write own compare function, like qsort -> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 function compare(a, b) {
     if (a.score < b.score)
