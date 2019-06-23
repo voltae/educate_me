@@ -34,13 +34,14 @@ function updateHighscore(newUserString) {
     let usersTemp = getScoreObjects();
     let newUser =JSON.parse(newUserString);
     usersTemp.push(newUser);
-    let user = [];
-    // alow only a MAX amount of entries in highscore.
+    // sort highscore right after insert
+    usersTemp.sort(compare);
+
+    let users = [];
+    // allow only a MAX amount of entries in highscore.
     for (let i = 0; i < MAX; i++) {
-        user[i] = usersTemp[i];
+        users[i] = usersTemp[i];
     }
-    // sort new highscore
-    users.sort(compare);
     // store stringified user array.
     localStorage.setItem(USERS, JSON.stringify(users));
 }
