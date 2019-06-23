@@ -21,7 +21,7 @@ function start() {
     result.resetCorrect();
     result.resetCount();
     result.setCurrentExam(true);
-    document.getElementById('exam-field').hidden = false;
+    document.getElementById('exam-field').hidden = !result.isCurrentExam;   // if current exam running set to false
 
 
 }
@@ -91,10 +91,12 @@ function getRespond(event) {
        let menuitem =  document.getElementById('restart');
         menuitem.addEventListener('click', start); // add listener to start again
         menuitem.classList.remove('disabled');
-        document.getElementById('answers').innerText= (result.getCorrect() / result.getCount() * 100).toFixed(0) + " % richtig"; // this is the header h3
-        result.setCurrentExam(false);
-        document.getElementById('exam-field').hidden = true;
 
+        const score = (result.getCorrect() / result.getCount() * 100).toFixed(0); // calculate score
+        document.getElementById('answers').innerText= score + " % richtig"; // this is the header h3
+        result.setCurrentExam(false);
+        document.getElementById('exam-field').hidden = !result.isCurrentExam;  // if current exam not running set to true
+        setHighscore(score);        // set highscore
     }
 }
 
@@ -139,6 +141,14 @@ function evaluateAnswer(element, answer) {
 
 function updateCounter() {
     document.getElementById('answers').innerText = result.getCount();
+}
+
+function setHighscore(score) {
+    let name = prompt("High Score - Bitte Name eingeben", "Name");
+
+    if (name != null && name != "") {
+        submitName(name, score);
+    }
 
 }
 /**
@@ -159,3 +169,4 @@ function logRespond(event) {
 
 function getError() {
 }
+

@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/pegasus.css">
-    <script src="js/process_highscore.js"></script>
-    <script src="js/exam.js"></script>
-    <title>Pr&uuml;fung</title>
+    <script scr="js/process_highscore.js"></script>
+    <script src="js/highscore.js"></script>
+    <title>High Score</title>
 </head>
 
 <body>
@@ -24,47 +24,51 @@
         <!-- Links -->
         <ul class="navbar-nav switchState">
             <li class="nav-item">
+                <a class="nav-link teach" href="exercise.html">Lernen</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link test" href="teach.html">&Uuml;ben</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link exam" href="exam.html">Test</a>
+            </li>
 
-            <li class="nav-item"><a class="nav-link" id='abort' href="index.html">Abbrechen</a></li>
-            <li class="nav-item"><a class="nav-link" id='restart' href="exam.html">Wiederholen</a></li>
+            <!-- Dropdown -->
+            <li class="nav-item dropdown switchState">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Dropdown link
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item teach" href="#">Lernen</a>
+                    <a class="dropdown-item test" href="#">&Uuml;ben</a>
+                    <a class="dropdown-item exam" href="exam.html">Test</a>
+                </div>
             </li>
         </ul>
     </nav>
 </header>
-
 <main>
-    <div class="container-fluid>">
-        <div class="jumbotron bg-2 jumbotron-fluid>">
-            <div class="container">
-                <div class="row">
-                    <h1 class="display-4" id="feedback" >Primary Science - Pr&uuml;fungsmodul</h1>
-                </div>
-                <div class="row">
-                    <p class="col" id="answers">0</p>
-                    <p class="col" id="total"></p>
-                </div>
-            </div>
-        </div>
-        <div class="row" id="exam-field">
-            <div id="question-field" class="col">
-                <h3>Text kommt in diesen Container</h3>
-                <p>Hier w&uuml;rde sich dann das ganze abspielen, ist halt mal so der Plan.</p>
-                <button class="btn btn-outline-info" id="next-quest">Frage wechseln</button>
-                <div id="quest-field"></div>
-            </div>
-            <div class="col">
-                <h3>Antwortfeld</h3>
-                <p>und hier das Antwort Formfeld</p>
-                <div id="feedback-field"></div>
-            </div>
-        </div>
-
+    <div class="container>">
+        <h1>Die Besten sind:</h1>
+        <table class="table table-light">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Richtig Beantwortet</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Testname</td>
+                <td>45</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </main>
 <footer>
-     &copy; Projekt Pegasus
+    &copy; Projekt Pegasus
 </footer>
-
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
