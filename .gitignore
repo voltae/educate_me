@@ -1,5 +1,7 @@
 # user defined - leave out local test file
 test.php
+.idea/workspace.xml
+highscore_js_notes.md
 
 
 # Created by https://www.gitignore.io/api/macos,phpstorm,webstorm,visualstudiocode
