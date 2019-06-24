@@ -59,16 +59,28 @@ function getRespond(event) {
 
         let tr = document.createElement("tr");
         table.appendChild(tr);
-        let answers = respond.alternatives;
-        answers.push(respond.answer);   // add he answer to the buttons
         if(filename == 'teach'){  //add only one button with the correct answer
           let td = document.createElement('td');
           let button = document.createElement('button');
-          button.innerText = answers.shift();
+          button.innerText = respond.answer;
           button.className ='btn btn-outline-primary';
           td.appendChild(button);
           tr.appendChild(td);
+          //hide that button and change text of main button to "reveal Answer"
+          button.hidden = true;
+
+          let bigButton  = document.getElementById('next-quest');
+          bigButton.innerText = "Antwort anzeigen";
+          bigButton.removeEventListener('click', getNext);
+          bigButton.addEventListener('click', function() {
+              button.hidden = false;
+              bigButton.innerText = "Frage wechseln";
+              bigButton.addEventListener('click', getNext);
+          });
+
         } else if (filename == "exercise") {
+          let answers = respond.alternatives;
+          answers.push(respond.answer);   // add he answer to the buttons
           answers = shuffle(answers);
           answers.forEach(element => {
               let td = document.createElement('td');
