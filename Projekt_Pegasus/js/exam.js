@@ -1,4 +1,5 @@
 window.addEventListener('load', setup);
+
 let result;     // global reference to class variable for result protocol
 
 function setup() {
@@ -128,7 +129,7 @@ function evaluateAnswer(element, answer) {
 function setHighscore(score) {
     let name = prompt("High Score - Bitte Name eingeben", "Name");
 
-    if (name != null && name != "") {
+    if (name != null && name !== "") {
         submitName(name, score);
     }
 
