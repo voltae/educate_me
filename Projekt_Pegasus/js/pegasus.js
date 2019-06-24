@@ -115,7 +115,6 @@ function evaluateAnswer(element, answer) {
         feedback.className='alert alert-warning';
         feedback.innerText = "Schade. Diese Antwort ist leider falsch!";
     }
-    getNext();
 }
 
 
