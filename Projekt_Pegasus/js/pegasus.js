@@ -9,9 +9,6 @@ function setup() {
     let stateItems = document.getElementsByClassName('switchState')[0].children;
     for (menuItem of stateItems) {
         menuItem.addEventListener('click', setState);
-        if (menuItem.children[0].className.match(regex)) {
-            menuItem.children[0].classList.add('active');
-        }
     }
 }
 
