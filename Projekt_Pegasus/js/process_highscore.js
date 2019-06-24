@@ -18,6 +18,7 @@ function User(name, score) {
     this.name = name;
     this.score = score;
 }
+
 function getScoreObjects() {
     // retrieve highscore from localStorage
     let usersString = localStorage.getItem(USERS);
@@ -48,9 +49,12 @@ function updateHighscore(newUserString) {
     localStorage.setItem(USERS, JSON.stringify(users));
 }
 
+/**
+ * returns true if array has not reach MAX or is better than last one
+ */
 function isValueInHighscore (score) {
     let users = getScoreObjects();
-    if (users.length == 0)
+    if (users.length < MAX)
         return true;
     // get last object
     for (let user of users) {
@@ -70,6 +74,6 @@ function compare(a, b) {
 }
 
 function submitName(username, score) {
-    let newUser = new User(username, score)
+    let newUser = new User(username, score);
     updateHighscore(JSON.stringify(newUser));
 }

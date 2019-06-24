@@ -17,7 +17,6 @@ function start() {
     menuitem.classList.add('disabled');     // set menu item inactive;
 
     document.getElementById('feedback').innerText = 'Primary Science - Prüfungsmodul';
-    document.getElementById('answers').innerText = '0';
 
     // start new result counting
     result.resetCorrect();
@@ -68,7 +67,6 @@ function getRespond(event) {
         questionField.getElementsByTagName('h3')[0].innerText= result.getCount() + ". Frage"; // this is the header h3
         questionField.getElementsByTagName('p')[0].innerText = respond.question; // this is the question paragraph
 
-        updateCounter();
         updateQuestions(respond);
 
     } else {
@@ -77,12 +75,14 @@ function getRespond(event) {
         menuitem.addEventListener('click', start); // add listener to start again
         menuitem.classList.remove('disabled');
 
-        const score = (result.getCorrect() / result.getCount() * 100).toFixed(0); // calculate score
+        const score = parseInt(result.getCorrect() / result.getCount() * 100); // calculate score
         document.getElementById('answers').innerText= score + " % richtig"; // this is the header h3
         result.setCurrentExam(false);
         document.getElementById('exam-field').hidden = !result.isCurrentExam;  // if current exam not running set to true
         // set highscore only if score is better than the least entry in highscore
-        if (isValueInHighscore(score)) { setHighscore(score); }
+        if (isValueInHighscore(score)) {
+            setHighscore(score);
+        }
     }
 }
 
@@ -123,10 +123,6 @@ function evaluateAnswer(element, answer) {
         feedback.innerText = "Schade. Diese Antwort ist leider falsch!";
     }
     getNext();
-}
-
-function updateCounter() {
-    document.getElementById('answers').innerText = result.getCount();
 }
 
 function setHighscore(score) {

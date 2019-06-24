@@ -36,3 +36,4 @@ function displayHighscore() {
     oldbody = document.getElementsByTagName('tbody')[0];
     oldbody.parentNode.replaceChild(tbody, oldbody);
 }
+
