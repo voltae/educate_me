@@ -42,6 +42,10 @@ p {
     text-align: center;
 }
 
+.active {
+    background: #f4511e;
+}
+
 button {
     background-color: #4CAF50; /* Green */
     border: none;

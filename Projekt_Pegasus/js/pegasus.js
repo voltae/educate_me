@@ -2,14 +2,17 @@ window.addEventListener('load', setup);
 var filename;
 
 function setup() {
-    document.getElementById('next-quest').addEventListener('click', getNext);
-    let stateItems = document.getElementsByClassName('switchState');
-    for (menuItem of stateItems) {
-        menuItem.addEventListener('click', setState);
-    }
-
     var url = document.URL;
     filename = url.split('/').pop().split('.').shift();
+    let regex = new RegExp(filename, 'gi');
+    document.getElementById('next-quest').addEventListener('click', getNext);
+    let stateItems = document.getElementsByClassName('switchState')[0].children;
+    for (menuItem of stateItems) {
+        menuItem.addEventListener('click', setState);
+        if (menuItem.children[0].className.match(regex)) {
+            menuItem.children[0].classList.add('active');
+        }
+    }
 }
 
 
@@ -29,11 +32,10 @@ function setState(event) {
     }
     xmlhttp.open('POST', '/../php/changeState.php');
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
     let name = event.target.className;
     if (name.includes('nav-link')) {
        name = name.replace('nav-link', '');
-    } else if (name.includes('dropdown-item')) {
-        name = name.replace('dropdown-item', '');
     }
     name = name.trim();
     if (name === 'exam') {
@@ -42,6 +44,7 @@ function setState(event) {
         xmlhttp.send("type=" + name);
     }
 }
+
 function getRespond(event) {
     let respond = JSON.parse(event.target.responseText);
     let questionField = document.getElementById('question-field');

@@ -12,8 +12,8 @@ switch ($type) {
     case 'exam':
         $_SESSION[RANDOM] = TRUE;
         break;
+    case 'exercise':
     case 'teach':
-    case 'test':
         $_SESSION[RANDOM] = FALSE;
         break;
     default:
