@@ -90,6 +90,8 @@ function getRespond(event) {
 function updateQuestions(respond) {
     // add the answer buttons
     let quest_field = document.getElementById('quest-field');
+	let start_button = document.getElementById('next-quest');
+	start_button.hidden = true;
     quest_field.innerHTML="";
     let table = document.createElement('tr');
     quest_field.appendChild(table);
@@ -108,7 +110,7 @@ function updateQuestions(respond) {
             evaluateAnswer(element, respond.answer);
         });
         button.innerText = element;
-        button.className ='btn btn-outline-primary';
+        button.className ='button';
         td.appendChild(button);
         tr.appendChild(td);
     });
