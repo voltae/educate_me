@@ -1,5 +1,6 @@
 window.addEventListener('load', setup);
 var filename;
+const amount = 8;
 
 function setup() {
     var url = document.URL;
@@ -36,7 +37,7 @@ function setState(event) {
     }
     name = name.trim();
     if (name === 'exam') {
-        xmlhttp.send("type=" +name +'&reset=true'); // if exam, begin with the 1. question
+        xmlhttp.send("type=" + name + '&reset=true&amount=' + amount); // if exam, begin with the 1. question, and set the amount to
     } else {
         xmlhttp.send("type=" + name);
     }

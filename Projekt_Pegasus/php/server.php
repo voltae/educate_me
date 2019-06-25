@@ -2,9 +2,11 @@
 session_start();
 
 const SESSION_NAME = 'user';    //!< distinguish between names: different user are detected
-const TYPE_USE ='type';         //!< distinguish between type: test, examine teach
+const TYPE_USE = 'type';         //!< distinguish between type: test, examine teach
 const RESET = 'reset';          //!< has user reset, begin from top?
 const RANDOM = 'random';        //!< session variable is random enabled?
+const AMOUNT = 'amount';         //!< how many question get asked per exam
+const ASKED = 'asked';          //!< how many questions has been asket
 $index_array = array();
 $predefinedQuestions = predefinedQuests();  // get the predefined quest array
 
@@ -13,6 +15,9 @@ if (!isset($_SESSION[SESSION_NAME])) {
     $_SESSION[SESSION_NAME] = getFullIndexArray(count($predefinedQuestions));
     $_SESSION[RANDOM] = 'false';
     $_SESSION[TYPE_USE] = 'teach';
+    $_SESSION[AMOUNT] = 10;      // set 10 question as default
+    $_SESSION[ASKED] = 0;
+
 }
 
 $reset = $_SESSION[RESET];
@@ -21,40 +26,60 @@ $reset = $_SESSION[RESET];
 if ($reset == 'true') {
     resetCurrentSession($predefinedQuestions);
     $_SESSION[RESET] = 'false'; // restore the normal working
+    $_SESSION[ASKED] = 0;       // reset the value of asked quests
 }
 
 // get index array from session
 $index_array = $_SESSION[SESSION_NAME];
 $random = $_SESSION[RANDOM];
+$amount = $_SESSION[AMOUNT];
 
-sendQuestions($predefinedQuestions, $index_array, $random);
+// test if amount is greater than actual array
+if ($amount > count($predefinedQuestions)) {
+    $amount = count($predefinedQuestions);
+}
+
+sendQuestions($predefinedQuestions, $index_array, $random, $amount);
 
 
-function sendQuestions ($predefinedQuestions, $index_array, $random)
+function sendQuestions($predefinedQuestions, $index_array, $random, $amount)
 {
+    // counter
+
 // get the questions that had not been already send
     $unsend = initQuestions($predefinedQuestions, $index_array);
 
-// if all questions had been send, return an index of -1 to signal the client cycle done
-    if (count($unsend) == 0) {
+    // if sate is in exam print out only the given amount
+    if ($_SESSION[ASKED] < $amount && $_SESSION[TYPE_USE] == 'exam') {
+        outpuSingleQuest($unsend, $random);
+    } // if sate is in teach or exercice print out entire array
+    else if (($_SESSION[TYPE_USE] == 'teach' || $_SESSION[TYPE_USE] == 'exercise') && count($unsend) > 0) {
+        outpuSingleQuest($unsend, $random);
+    } // if all questions had been send, return an index of -1 to signal the client cycle done
+    else {
         $question = new Question('', '', '');
         $question->index = -1;
         echo json_encode($question);
 
         // and begin a new full cycle
         $_SESSION[SESSION_NAME] = getFullIndexArray(count($predefinedQuestions));
-    } // in other case operate normal
-    else {
-        // if random mode has been set, pick a random number from the unsend, else simple take the first
-        $random == 'true'? $index = rand(0, count($unsend) - 1) : $index = 0;
-        $unsend = array_values($unsend);  // pick the corresponding item
-        $question = $unsend[$index];    // create an quest object
-
-        array_splice($_SESSION[SESSION_NAME], $index, 1);  // remove this index from session index array
-        $jsonQuest = json_encode($question);    // convert the object to json
-        echo $jsonQuest;    // and send it to the client.
+        $_SESSION[ASKED] = 0;
     }
 }
+
+function outpuSingleQuest($unsend, $random)
+{
+    // if random mode has been set, pick a random number from the unsend, else simple take the first
+    $random == 'true' ? $index = rand(0, count($unsend) - 1) : $index = 0;
+    $unsend = array_values($unsend);  // pick the corresponding item
+    $question = $unsend[$index];    // create an quest object
+
+    array_splice($_SESSION[SESSION_NAME], $index, 1);  // remove this index from session index array
+    $jsonQuest = json_encode($question);    // convert the object to json
+    $_SESSION[ASKED]++;
+    echo $jsonQuest;    // and send it to the client.
+}
+
 // Question class definiton
 class Question
 {
@@ -89,7 +114,8 @@ function initQuestions($questions, $index_array)
     return $temp;
 }
 
-function predefinedQuests() {
+function predefinedQuests()
+{
     // constant array of questions
     return array(
         new Question("Wie viel wiegt ein ausgewachsenes Nashorn?", "3400 kg", array("120 kg", "25 t", "8.000 kg")),
@@ -109,17 +135,20 @@ function predefinedQuests() {
         new Question("Wie groß kann ein Königspungiun werden?", "85-95cm", array("2m", "178 cm", "12 cm"))
     );
 }
+
 // create an index array with the given index count
-function getFullIndexArray($predefinedQuestsCount) {
+function getFullIndexArray($predefinedQuestsCount)
+{
     $temp = array();
     for ($i = 0; $i < $predefinedQuestsCount; $i++) {
-        $temp[$i] =$i;
+        $temp[$i] = $i;
     }
     return $temp;
 }
 
 // reset the current session
-function resetCurrentSession($predefinedQuestions) {
+function resetCurrentSession($predefinedQuestions)
+{
     $_SESSION[SESSION_NAME] = getFullIndexArray(count($predefinedQuestions));
 
 }
