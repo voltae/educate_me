@@ -41,6 +41,7 @@ Nächster Request ist dann bereits Beginn eines neuen Fragenzyklus.
 ```
 #### Server states
 Der Server kennt 2 Zustände, **not-random** und **random**. Im Falle not-random schickt der Server die Fragen in sequentieller Ordnung, im Zustand random hingegen werden die Fragen zufallsmäßig gemischt. Der Server schickt hinterenander alle gespeicherten Fragen, falls dieser Block zuende ist sendet der Server `index = -1` an den Client um zu signalisieren, hier endet ein Zyklus. Dann beginnt der Server wieder mit neuen Zyklus.
+Der Server unterscheidet ob er im *exam* Modus ist, oder im *Übungsmodus*. Im exam Modus sendet er nur eine bestimmte Anzahl an Fragen, die er vom Client via post-request bekommt. 
 ## Client
 Client ist in Html, CSS und Javascript ausgeführt. Als Responsive Framework wurde ![Bootstrap 4](https://getbootstrap.com) verwendet
 ### Request
@@ -53,6 +54,6 @@ In diesem Modus bekommt die Schüler die einzelne Frage, und hat Zeit sich eine 
 #### üben
 Der Modus lehnt sich bereits an den Test Modus an, der Schüler bekommt alle 4 Möglichkeiten zur Auswahl, hat aber beliebig viele Versuche pro Frage. Es wird ein schriftliches Feedback ausgegeben, aber die Anzahl der richtigen und falschen eingaben werden nicht mitprotokolliert. Fragen werdn sequentiell, nichtzufällig gestellt.
 #### test
-In dem Modus kann der Schüler sein Wissen unter Beweis stellen uns sich mit seinen Kollegen vergleichen. Er bekommt pro  Versuch eine neue Frage, unabhängig ob sie richtig oder falsch beantwortet worden ist. Die Anzahl der richtigen Antworten wird mitprotokolliert. Der Schüler kann den Test nicht von beenden und wieder beginnen, sondern nur entweder vollständign ausführen oder abbrechen. Fragen werden dem Schüler nach Zufallsprinzip gestellt, es gibt keine zeitliche Einschränkung.
+In dem Modus kann der Schüler sein Wissen unter Beweis stellen uns sich mit seinen Kollegen vergleichen. Er bekommt pro  Versuch eine neue Frage, unabhängig ob sie richtig oder falsch beantwortet worden ist. Die Anzahl der richtigen Antworten wird mitprotokolliert. Der Schüler kann den Test nicht von beenden und wieder beginnen, sondern nur entweder vollständign ausführen oder abbrechen. Fragen werden dem Schüler nach Zufallsprinzip gestellt, es gibt keine zeitliche Einschränkung. Der Schüler bekommt **nicht alle** Fragen gestellt, sondern eine zuäälige Auswahl davon. Die Anzahl ist z.Z als globale Konstante definiert.
 #### Highscore
 Jeder Test wird bewertet und zwar prozentuell richtige Antworten an Gesamtfragen. Die besten 10 dürfen sich in eine Highscore Liste eintragen. Diese ist client-seitig gespeichert im Browser localStorage.
