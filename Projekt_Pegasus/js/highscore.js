@@ -14,7 +14,7 @@ function displayHighscore() {
     let users;
     let i = 0;
     if (usersString == null) {
-        users = [{name:"", score:0}];
+        users = null;
     } else {
         users = JSON.parse(usersString);
     }
@@ -36,4 +36,3 @@ function displayHighscore() {
     oldbody = document.getElementsByTagName('tbody')[0];
     oldbody.parentNode.replaceChild(tbody, oldbody);
 }
-
