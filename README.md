@@ -15,17 +15,21 @@ Frage wird angezeigt, User hat Auswahl der Antworten anch Mulitple Choice Prinzi
 8 Fragen random ausgewählt. UI wie Practice aber mit mitprotokollieren der Anzahl der richtigen und falschen Antworten.
 ab 50% positiv -> Highscore wird automatisch erstellt, Smiley angezeigt; unter 50% -> Wiederholung nach einem Timer (bsp 30 sec; check ob Timer trotz refresh bestehen bleibt) möglich; sadface wird angezeigt. Es wird kein Highscore gespeichert.
 # Technische Implementierung
-Fragen und Antworten: Array (JSON List);
-Da die Frge jeweils mehrere mögliche Antworten speichern kann, ist glaube ich besser, ein Objekt zu erstellen, das Frage und Antwort  gleichzeitig speichert. Die Fragen können dann als Objekt-Arra gespeichert werden.
+Die App ist als Server - Client App ausgeführt. Der Client sendet einen AJAX-Request an den Server und erhält als AJAX-Response einen JSON String mit der Frage und den möglichen Antworten. Das Protokoll ist [hier](#protocol) beschrieben. Der Client übernimmt die gesamte App-logik:
+* Lernen 
+* Üben
+* Test
+* Highscore
 
 ## Server
-Verwendung von serverseitigen _PHP_ um Client Fragen zu schicken. 
+Verwendung von serverseitigen _PHP_ um Client Fragen zu schicken. Dabei wird für denen Request immer **ein Fragen-JSON** gesendet. Der Server hat alle Fragen in einem Objektarray geschrieben und ist so ausgeführt, daß das Array jederzeit erweitert werden kann. So wäre es z.B. möglich das Array von der Festplatte einzulesen.
 ### Protokoll
 Server ist als **stateful Server** ausgeführt, d.h. er führt Buch, welche Fragen dem Clienten bereits geschickt wurden. aus den verbleibenden sucht Server jeweils zufällig eine Frage aus und schickt diese nach jedem Ajax-Request an Client. Falls alle Fragen durch (Zyklus beendet) schickt Server eine quest mit **index -1** um Ende zu signalisieren.
 Nächster Request ist dann bereits Beginn eines neuen Fragenzyklus.
 Übertragen wird mittels **JSON Decoding** Client encodiert JSON und hat dann alle Informationen, grundlegend für Protokoll ist Objektdefinition. Beispiel einer überrtagenen JSON Quest:
 ```{"question":"Das wieviel-fache ihres K\u00f6rpergewichtes k\u00f6nnen Ameisen tragen?","answer":"30fach","index":13,"alternatives":["2fach","10fach","140fach"]}```
-### Objekt Prototyp
+
+### <a id="protocol"></a>Objekt Prototyp ###
 #### declaration
 ```class Question
 {
@@ -35,44 +39,20 @@ Nächster Request ist dann bereits Beginn eines neuen Fragenzyklus.
   public $alternatives = [];  // alternative answers array
 }
 ```
-
+#### Server states
+Der Server kennt 2 Zustände, **not-random** und **random**. Im Falle not-random schickt der Server die Fragen in sequentieller Ordnung, im Zustand random hingegen werden die Fragen zufallsmäßig gemischt. Der Server schickt hinterenander alle gespeicherten Fragen, falls dieser Block zuende ist sendet der Server `index = -1` an den Client um zu signalisieren, hier endet ein Zyklus. Dann beginnt der Server wieder mit neuen Zyklus.
 ## Client
+Client ist in Html, CSS und Javascript ausgeführt. Als Responsive Framework wurde ![Bootstrap 4](https://getbootstrap.com) verwendet
 ### Request
-Mittels AJAX nach jedem Ckick auf Frage eine asynchronen Request an Server
+Mittels AJAX nach jedem Click auf Frage eine asynchronen Request an Server. Der Client teilt den Server den gewünschten Zustand mit (ranodm, not-random) und erhält für jeden Request eine Frage als Respond.
 ### Respond
-* Parsen des JSON Resond, aufteilen der Nachricht auf entsprechende Elemente. Frage in Fragen-Feld. Antworten in entsprechende Buttons. **Antwortbuttons zufällig durcheinandergemischt**, sonst wird antworten einfach :-) 
-* Überprüfen der Antwort mittels Logik
-* Feedback an Spieler
-
----
-# Task detail
-* Create an educational Web app for children aged 7-10 (2nd grade++)
-* Choose one educational subject: 
-  1. basic math
-  2. German
-  3. English
-  4. basic science
-  5. music
-* Content
-  * Section to teach the subject
-  * Section to practice the suResponsive design: might adapt to Laptop browser as well as mobile phone screen; use, e.g., the Chrome tools (Command+Shift+M (Mac) or Ctrl+Shift+M (Windows, Linux)
-  * Any framework or library to support the exercise can be chosen but has to be understood by every group member 
-  * Storing data in the browser with, e.g., taffyDB possible Backend code, e.g., via Node.js or PHP and a (local) Web server is not mandatory Object with interaction capability
-  * Section to test the subject that leads to a test result
-  * Section with stored high scores of previous test results
-## Mandatory
-* Design and implement the educational Web app
-* Appropriate UI that is appealing for the target group
-* Usage of JavaScript for actions and events
-* Readme that sums up the features and roughly explains the code structure (Markdown recommended as describing markup language
-## Optional
-* Responsive design: might adapt to Laptop browser as well as mobile phone screen; use, e.g., the Chrome tools (Command+Shift+M (Mac) or Ctrl+Shift+M (Windows, Linux)
-* Any framework or library to support the exercise can be chosen but has to be understood by every group member
-* Storing data in the browser with, e.g., taffyDB possible
-* Backend code, e.g., via Node.js or PHP and a (local) Web server is not mandatory
-## Grading
-* Max 200 points per group of 4 possible, with 50 points max per member
-* Major: Proper usage of mentioned technologies important Major: Balancing of invested time budget for (1) technology showcase versus (2) UI design crucial
-* Minor: developing a ”real” education framework
-
-
+* Parsen des JSON Resond, aufteilen der Nachricht auf Buttons, Fragemodus ist multiple choice mit jeweils **einer richtigen Antwort** 
+### Modi
+#### lernen
+In diesem Modus bekommt die Schüler die einzelne Frage, und hat Zeit sich eine Antwort zu überlegen. Mit clicken auf den Antwort-Button erscheint dann nur die richitge Antwort, damit kann der Schüler sein Wissen mit der richtigen Antwort vergleichen, oder lernen indem einfach auf Antwort gedrückt wird.
+#### üben
+Der Modus lehnt sich bereits an den Test Modus an, der Schüler bekommt alle 4 Möglichkeiten zur Auswahl, hat aber beliebig viele Versuche pro Frage. Es wird ein schriftliches Feedback ausgegeben, aber die Anzahl der richtigen und falschen eingaben werden nicht mitprotokolliert. Fragen werdn sequentiell, nichtzufällig gestellt.
+#### test
+In dem Modus kann der Schüler sein Wissen unter Beweis stellen uns sich mit seinen Kollegen vergleichen. Er bekommt pro  Versuch eine neue Frage, unabhängig ob sie richtig oder falsch beantwortet worden ist. Die Anzahl der richtigen Antworten wird mitprotokolliert. Der Schüler kann den Test nicht von beenden und wieder beginnen, sondern nur entweder vollständign ausführen oder abbrechen. Fragen werden dem Schüler nach Zufallsprinzip gestellt, es gibt keine zeitliche Einschränkung.
+#### Highscore
+Jeder Test wird bewertet und zwar prozentuell richtige Antworten an Gesamtfragen. Die besten 10 dürfen sich in eine Highscore Liste eintragen. Diese ist client-seitig gespeichert im Browser localStorage.
