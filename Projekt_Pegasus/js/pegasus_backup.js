@@ -52,59 +52,45 @@ function getRespond(event) {
         questionField.getElementsByTagName('p')[0].innerText = respond.question; // this is the question paragraph
 
         // add the answer buttons
-        //let quest_field = document.getElementById('quest-field');
-        //quest_field.innerHTML="";
-        //let table = document.createElement('tr');
-        //quest_field.appendChild(table);
-        //table.className = 'table table-borderless';
+        let quest_field = document.getElementById('quest-field');
+        quest_field.innerHTML="";
+        let table = document.createElement('tr');
+        quest_field.appendChild(table);
+        table.className = 'table table-borderless';
 
-        //let tr = document.createElement("tr");
-        //table.appendChild(tr);
-        if(filename == 'teach'){ 
-		let quest_field = document.getElementById('quest-field');
-        quest_field.innerHTML="";		//add only one button with the correct answer
-          //let td = document.createElement('td');
-          //let button = document.createElement('button');
-          quest_field.innerText = respond.answer;
-          quest_field.className ='button';
-          //td.appendChild(button);
-          //tr.appendChild(td);
+        let tr = document.createElement("tr");
+        table.appendChild(tr);
+        if(filename == 'teach'){  //add only one button with the correct answer
+          let td = document.createElement('td');
+          let button = document.createElement('button');
+          button.innerText = respond.answer;
+          button.className ='btn btn-outline-primary';
+          td.appendChild(button);
+          tr.appendChild(td);
           //hide that button and change text of main button to "reveal Answer"
-          quest_field.hidden = true;
+          button.hidden = true;
 
           let bigButton  = document.getElementById('next-quest');
           bigButton.innerText = "Antwort anzeigen";
           bigButton.removeEventListener('click', getNext);
           bigButton.addEventListener('click', function() {
-              quest_field.hidden = false;
+              button.hidden = false;
               bigButton.innerText = "Frage wechseln";
               bigButton.addEventListener('click', getNext);
           });
 
         } else if (filename == "exercise") {
-			 let answer_field = document.getElementById('answer-field');
-			 let feedback = document.getElementById("quest-field");
-			 feedback.className='';
-			 answer_field.removeChild(answer_field.childNodes[2]);
-			 //console.log(answer_field.childNodes[3]);
           let answers = respond.alternatives;
           answers.push(respond.answer);   // add he answer to the buttons
           answers = shuffle(answers);
-		  
-		let table = document.createElement('tr');   
-		table.className = 'table table-borderless';		
-		let tr = document.createElement("tr");
-		 answer_field.appendChild(table);
-        table.appendChild(tr);
-		
-	    answers.forEach(element => {
+          answers.forEach(element => {
               let td = document.createElement('td');
               let button = document.createElement('button');
               button.addEventListener('click', function() {
                   evaluateAnswer(element, respond.answer);
               });
               button.innerText = element;
-              button.className ='button';
+              button.className ='btn btn-outline-primary';
               td.appendChild(button);
               tr.appendChild(td);
           });
@@ -119,7 +105,7 @@ function evaluateAnswer(element, answer) {
     console.log(element);
     console.log(answer);
 
-    let feedback = document.getElementById("quest-field");
+    let feedback = document.getElementById("feedback-field");
     if(element === answer) {
         feedback.className='alert alert-success';
         feedback.innerText = "Super, diese Antwort ist richtig!";
