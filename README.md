@@ -4,16 +4,14 @@ Educational Web app for children aged 7-10
 ## Topic 
 Basic Science
 
-## Design Details
+## Design Details - Proposals
 ### Teach
 Frage erscheint im Fragefeld. User hat die Möglichkeit mittels Antwort Button die richtige Anwort einzusehen.
-_Wie kommt User zur nächste Frage Button oder Time out?_
 ### Practice
 Frage wird angezeigt, User hat Auswahl der Antworten anch Mulitple Choice Prinzip aus 4 Möglichkeiten. Immer nur 1 richtig.
-**ProgessBar**
 ### Test
 8 Fragen random ausgewählt. UI wie Practice aber mit mitprotokollieren der Anzahl der richtigen und falschen Antworten.
-ab 50% positiv -> Highscore wird automatisch erstellt, Smiley angezeigt; unter 50% -> Wiederholung nach einem Timer (bsp 30 sec; check ob Timer trotz refresh bestehen bleibt) möglich; sadface wird angezeigt. Es wird kein Highscore gespeichert.
+ab 50% positiv; Highscore wird immer erstellt; 
 # Technische Implementierung
 Die App ist als Server - Client App ausgeführt. Der Client sendet einen AJAX-Request an den Server und erhält als AJAX-Response einen JSON String mit der Frage und den möglichen Antworten. Das Protokoll ist [hier](#protocol) beschrieben. Der Client übernimmt die gesamte App-logik:
 * Lernen 
