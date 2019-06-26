@@ -20,6 +20,7 @@ function displayHighscore() {
     }
 
     let tbody = document.createElement('tbody');
+    tbody.className = "bg-1";
     users.forEach((user) => {
         let row = document.createElement('tr');
         let cell1 = document.createElement('td');
