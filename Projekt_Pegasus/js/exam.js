@@ -28,22 +28,43 @@ function start() {
 
 // class function for result protocol
 class Results {
-    constructor () {
+    constructor() {
         this.count = 0;
         this.correct = 0;
         this.isCurrentExam = false;
     }
 
-    incrementCount() { this.count++; }
-    getCount() { return this.count; }
-    resetCount() { this.count = 0 }
+    incrementCount() {
+        this.count++;
+    }
 
-    incrementCorrect() { this.correct++;}
-    getCorrect() { return this.correct; }
-    resetCorrect() { this.correct = 0; }
+    getCount() {
+        return this.count;
+    }
 
-    isCurrentExam() { return this.isCurrentExam; }
-    setCurrentExam(value) { this.isCurrentExam = value; }
+    resetCount() {
+        this.count = 0
+    }
+
+    incrementCorrect() {
+        this.correct++;
+    }
+
+    getCorrect() {
+        return this.correct;
+    }
+
+    resetCorrect() {
+        this.correct = 0;
+    }
+
+    isCurrentExam() {
+        return this.isCurrentExam;
+    }
+
+    setCurrentExam(value) {
+        this.isCurrentExam = value;
+    }
 }
 
 
@@ -62,22 +83,28 @@ function getNext() {
 function getRespond(event) {
     let respond = JSON.parse(event.target.responseText);
     let questionField = document.getElementById('question-field');
-    if(parseInt(respond.index) >= 0){
+    if (parseInt(respond.index) >= 0) {
         // add the question text
         result.incrementCount();
-        questionField.getElementsByTagName('h3')[0].innerText= result.getCount() + ". Frage"; // this is the header h3
+        questionField.getElementsByTagName('h3')[0].innerText = result.getCount() + ". Frage"; // this is the header h3
         questionField.getElementsByTagName('p')[0].innerText = respond.question; // this is the question paragraph
 
         updateQuestions(respond);
 
     } else {
-        document.getElementById('feedback').innerText ='Du hast '+ result.getCorrect() + ' Fragen von ' +result.getCount()+ ' richtig beantwortet!';
-       let menuitem =  document.getElementById('restart');
+        let menuitem = document.getElementById('restart');
         menuitem.addEventListener('click', start); // add listener to start again
         menuitem.classList.remove('disabled');
 
         const score = parseInt(result.getCorrect() / result.getCount() * 100); // calculate score
-        document.getElementById('answers').innerText= score + " % richtig"; // this is the header h3
+        let feedback = document.getElementById('feedback-field');
+        if (score < 50) {
+            feedback.className = "alert alert-warning";
+        } else {
+            feedback.className = "alert alert-success";
+        }
+        feedback.innerText = 'Du hast ' + result.getCorrect() + ' Fragen von ' + result.getCount() + ' richtig beantwortet!';
+
         result.setCurrentExam(false);
         document.getElementById('exam-field').hidden = !result.isCurrentExam;  // if current exam not running set to true
         // set highscore only if score is better than the least entry in highscore
@@ -90,9 +117,9 @@ function getRespond(event) {
 function updateQuestions(respond) {
     // add the answer buttons
     let quest_field = document.getElementById('quest-field');
-	let start_button = document.getElementById('next-quest');
-	start_button.hidden = true;
-    quest_field.innerHTML="";
+    let start_button = document.getElementById('next-quest');
+    start_button.hidden = true;
+    quest_field.innerHTML = "";
     let table = document.createElement('tr');
     quest_field.appendChild(table);
     table.className = 'table table-borderless';
@@ -100,29 +127,30 @@ function updateQuestions(respond) {
     let tr = document.createElement("tr");
     table.appendChild(tr);
     let answers = respond.alternatives;
-    answers.push(respond.answer);   // add he answer to the buttons
+    answers.push(respond.answer);   // add the answer to the buttons
 
     answers = shuffle(answers);
     answers.forEach(element => {
         let td = document.createElement('td');
         let button = document.createElement('button');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             evaluateAnswer(element, respond.answer);
         });
         button.innerText = element;
-        button.className ='button';
+        button.className = 'button';
         td.appendChild(button);
         tr.appendChild(td);
     });
 }
+
 function evaluateAnswer(element, answer) {
     let feedback = document.getElementById("feedback-field");
-    if(element === answer) {
-        feedback.className='alert alert-success';
+    if (element === answer) {
+        feedback.className = 'alert alert-success';
         feedback.innerText = "Super, diese Antwort ist richtig!";
         result.incrementCorrect();
     } else {
-        feedback.className='alert alert-warning';
+        feedback.className = 'alert alert-warning';
         feedback.innerText = "Schade. Diese Antwort ist leider falsch!";
     }
     getNext();
@@ -136,6 +164,7 @@ function setHighscore(score) {
     }
 
 }
+
 /**
  * Shuffles array in place. ES6 version
  * @param {Array} a items An array containing the items.

@@ -14,12 +14,13 @@ function displayHighscore() {
     let users;
     let i = 0;
     if (usersString == null) {
-        users = null;
+        users = [];
     } else {
         users = JSON.parse(usersString);
     }
 
     let tbody = document.createElement('tbody');
+    tbody.className = "bg-1";
     users.forEach((user) => {
         let row = document.createElement('tr');
         let cell1 = document.createElement('td');
