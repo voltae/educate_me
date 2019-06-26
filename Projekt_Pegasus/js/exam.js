@@ -71,13 +71,19 @@ function getRespond(event) {
         updateQuestions(respond);
 
     } else {
-        document.getElementById('feedback').innerText ='Du hast '+ result.getCorrect() + ' Fragen von ' +result.getCount()+ ' richtig beantwortet!';
        let menuitem =  document.getElementById('restart');
         menuitem.addEventListener('click', start); // add listener to start again
         menuitem.classList.remove('disabled');
 
         const score = parseInt(result.getCorrect() / result.getCount() * 100); // calculate score
-        document.getElementById('answers').innerText= score + " % richtig"; // this is the header h3
+        let feedback = document.getElementById('feedback-field');
+        if (score < 10) {
+            feedback.className("alert alert-warning");
+        } else {
+            feedback.className("alert alert-success");
+        }
+        feedback.innerText = 'Du hast ' + result.getCorrect() + ' Fragen von ' + result.getCount() + ' richtig beantwortet!';
+
         result.setCurrentExam(false);
         document.getElementById('exam-field').hidden = !result.isCurrentExam;  // if current exam not running set to true
         // set highscore only if score is better than the least entry in highscore

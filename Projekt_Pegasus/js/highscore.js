@@ -14,7 +14,7 @@ function displayHighscore() {
     let users;
     let i = 0;
     if (usersString == null) {
-        users = null;
+        users = [];
     } else {
         users = JSON.parse(usersString);
     }
