@@ -42,6 +42,13 @@ p {
     background: #f4511e;
 }
 
+.table {
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 1rem;
+    background-color: transparent;
+}
+
 button {
     background-color: #F2DE30; /* Green */
     border: none;

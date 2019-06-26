@@ -100,7 +100,7 @@ function updateQuestions(respond) {
     let tr = document.createElement("tr");
     table.appendChild(tr);
     let answers = respond.alternatives;
-    answers.push(respond.answer);   // add he answer to the buttons
+    answers.push(respond.answer);   // add the answer to the buttons
 
     answers = shuffle(answers);
     answers.forEach(element => {
