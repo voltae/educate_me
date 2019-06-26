@@ -1,6 +1,8 @@
-body {
+body, html {
     background-image: url("../img/stars2.jpg");
     background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
 }
 
 h1 {
